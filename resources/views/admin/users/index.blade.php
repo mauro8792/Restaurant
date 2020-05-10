@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('title', 'La Carreta')
 
 @section('styles')
@@ -222,6 +223,7 @@
 @section('scripts')
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
     <script>
         $(document).ready(function() {
             // show the alert
@@ -229,6 +231,7 @@
                 $(".alert").alert('close');
             }, 3000);
         });
+
 
         $('#modalUserAdd').on('shown.bs.modal', function (e) {
             $('#name').focus();
@@ -273,3 +276,5 @@
         } );
     </script>
 @stop
+
+
