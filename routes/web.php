@@ -13,10 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('logout', function ()
+{
+    auth()->logout();
+    Session()->flush();
+
+    return Redirect::to('/');
+})->name('logout');
+
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/home', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('admin')->namespace('Admin')->group(function () {
+    Route::get('/users', 'UserController@index'); // listado
+    Route::post('/users/edit', 'UserController@update'); // actualizar
+    Route::delete('/users', 'UserController@destroy'); // eliminar
+    Route::post('/users/add', 'UserController@store'); // agregar
+});    
