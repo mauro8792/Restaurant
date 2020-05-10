@@ -57,5 +57,18 @@ Route::prefix('admin')->namespace('Admin\Menu')->middleware(['auth'])
         Route::get('/products/{id}/edit', 'ProductController@edit'); // formulario edición
         Route::post('/products/{id}/edit', 'ProductController@update'); // actualizar
         Route::delete('/products', 'ProductController@destroy'); // form eliminar
+        
+});
+
+Route::prefix('admin')->namespace('Admin\Catering')->middleware(['auth'])
+    ->group(function () {
+        //rutas de catering
+        Route::get('caterings', 'CateringController@index'); // listado
+        Route::get('/caterings/create', 'CateringController@create'); // formulario
+        Route::post('/caterings', 'CateringController@store'); // registrar
+        Route::get('/caterings/{category}/edit', 'CateringController@edit'); // formulario edición
+        Route::post('/caterings/{category}/edit', 'CateringController@update'); // actualizar
+        Route::delete('/caterings', 'CateringController@destroy'); // form eliminar
+               
 });
 
