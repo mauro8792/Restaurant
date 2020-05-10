@@ -22,10 +22,7 @@ class Product extends Model
           
         if ($this->image)
             return '/images/products/'.$this->image;
-        // else
-        // $firstProduct = $this->products()->first();
-        // if ($firstProduct)
-        //     return $firstProduct->featured_image_url;
+        
 
         return '/images/default.gif';
     }
