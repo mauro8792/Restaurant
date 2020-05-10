@@ -63,18 +63,18 @@ class ProductController extends Controller
         $product->category_id = $request->category_id == 0 ? null : $request->category_id;
         $product->save(); // INSERT
         
-        // if ($request->hasFile('image')) {
-        //     $file = $request->file('image');
-        //     $path = public_path() . '/images/categories';
-        //     $fileName = uniqid() . '-' . $file->getClientOriginalName();
-        //     $moved = $file->move($path, $fileName);
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = public_path() . '/images/products';
+            $fileName = uniqid() . '-' . $file->getClientOriginalName();
+            $moved = $file->move($path, $fileName);
 
             
-        //     if ($moved) {
-        //         $product->image = $fileName;
-        //         $product->save(); // UPDATE
-        //     }
-        // }
+            if ($moved) {
+                $product->image = $fileName;
+                $product->save(); // UPDATE
+            }
+        }
         
 
         return redirect('/admin/products');

@@ -27,6 +27,7 @@
                                     <th class="text-center" width="15%">Nombre</th>
                                     <th class="text-center" width="35%">Descripción</th>
                                     <th class="text-center" width="15%">Categoría</th>
+                                    <th class="text-center" width="15%">Imagen</th>
                                     <th class="text-center">Precio</th>
                                     <th class="text-center" width="20%">Opciones</th>
                                 </tr>
@@ -37,7 +38,8 @@
                                    
                                     <td class="text-left">{{ $product->name }}</td>
                                     <td class="text-left">{{ $product->description  }}</td>
-                                    <td class="text-left">{{ $product->category->name }}</td>                                    
+                                    <td class="text-left">{{ $product->category->name }}</td>
+                                    <td class="text-center"><img src="{{ $product->featured_image_url }}" height="50"></td>                                    
                                     <td class="text-right">@if($product->price>0)$@endif {{ $product->price }}</td>
                                     <td class="text-center">
                                         <form method="post" action="{{ url('/admin/products') }}">

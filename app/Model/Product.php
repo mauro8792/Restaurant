@@ -17,19 +17,18 @@ class Product extends Model
 
     
 
-    // public function getFeaturedImageUrlAttribute()
-    // {
-    //     $featuredImage = $this->images()->where('featured', true)->first();
-    //     if (!$featuredImage)
-    //         $featuredImage = $this->images()->first();
+    public function getFeaturedImageUrlAttribute()
+    {
+          
+        if ($this->image)
+            return '/images/products/'.$this->image;
+        // else
+        // $firstProduct = $this->products()->first();
+        // if ($firstProduct)
+        //     return $firstProduct->featured_image_url;
 
-    //     if ($featuredImage) {
-    //         return $featuredImage->url;
-    //     }
-
-    //     // default
-    //     return '/images/default.gif';
-    // }
+        return '/images/default.gif';
+    }
 
     public function getCategoryNameAttribute()
     {

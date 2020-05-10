@@ -18,7 +18,7 @@
                 </div>
             @endif
 
-            <form method="post" action="{{ url('/admin/products') }}">
+            <form method="post" action="{{ url('/admin/products') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
 
                 <div class="row">
@@ -28,7 +28,12 @@
                             <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                         </div>
                     </div>
-
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="control-label">Imagen del producto</label>
+                            <input type="file" name="image">
+                        </div>
+                    </div>
                     <div class="col-sm-5">
                         <div class="form-group">
                             <label class="control-label">Categoría del producto</label>
