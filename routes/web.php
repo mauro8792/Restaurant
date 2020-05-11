@@ -68,7 +68,28 @@ Route::prefix('admin')->namespace('Admin\Catering')->middleware(['auth'])
         Route::post('/caterings', 'CateringController@store'); // registrar
         Route::get('/caterings/{category}/edit', 'CateringController@edit'); // formulario edición
         Route::post('/caterings/{category}/edit', 'CateringController@update'); // actualizar
-        Route::delete('/caterings', 'CateringController@destroy'); // form eliminar
-               
+        Route::delete('/caterings', 'CateringController@destroy'); // form eliminar               
 });
 
+Route::prefix('admin/recipes')->namespace('Admin\Recipe')->middleware(['auth'])
+    ->group(function () {
+        //rutas de categorias del recetario
+        Route::get('categories', 'CategoryController@index'); // listado
+        Route::get('/categories/create', 'CategoryController@create'); // formulario
+        Route::post('/categories', 'CategoryController@store'); // registrar
+        Route::get('/categories/{category}/edit', 'CategoryController@edit'); // formulario edición
+        Route::post('/categories/{category}/edit', 'CategoryController@update'); // actualizar
+        Route::delete('/categories', 'CategoryController@destroy'); // form eliminar       
+});
+Route::prefix('admin/')->namespace('Admin\Recipe')->middleware(['auth'])
+    ->group(function () {
+        //rutas de recetas
+        Route::get('recipes', 'RecipeController@index'); // listado
+        Route::get('/recipes/create', 'RecipeController@create'); // formulario
+        Route::post('/recipes', 'RecipeController@store'); // registrar
+        Route::get('/recipes/{category}/edit', 'RecipeController@edit'); // formulario edición
+        Route::post('/recipes/{category}/edit', 'RecipeController@update'); // actualizar
+        Route::delete('/recipes', 'RecipeController@destroy'); // form eliminar
+
+        Route::get('/recipes/{id}/images', 'RecipeController@indeximage'); 
+});
