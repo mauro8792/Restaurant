@@ -4,16 +4,19 @@
 @section('title', 'La Carreta')
 
 @section('styles')
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.css"/>    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/autofill/2.3.4/css/autoFill.bootstrap4.min.css"> -->
 @stop
 
 @section('content')
-    <section class="mb-4">
-      <div class="container mt-3">
+    <section class="ftco-cover" style="background-image: url({{ asset('/images/bg_3.jpg') }});" id="section-home">
+      <div class="container ">
+
+
 
               <div class="div_trans8 corner4 p-5">
                   <div class="text-white">
-                      <h2 class="text-center text-white mt-2">Listado de Usuarios</h2>
+                      <h2 class="text-center text-white mt-5">Listado de Usuarios</h2>
                       @if (session('notification'))
                           <div class="alert alert-success">
                               {{ session('notification') }}
@@ -103,7 +106,7 @@
                                                               <input class="form-control" type="text" name="name" value="{{ $user->name }}" autofocus/>
                                                           </div>
                                                           <div class="form-group">
-                                                              <label for="email" class="col-form-label text-burdeos">E-Mail:</label>
+                                                              <label for="email" class="col-form-label text-burdeos">Correo Electrónico:</label>
                                                               <input class="form-control" type="text" name="email" value="{{ $user->email }}">
                                                           </div>
                                                       </div>
@@ -162,12 +165,16 @@
                       </div>
                   </div>
               </div>
+
+                  <p>&nbsp;</p>
+
         </div>
     </div>
 
     </section>
     <!-- END section -->
  
+    
     <!-- Modal User Add -->
     <div class="modal fade t-black" id="modalUserAdd" tabindex="-1" role="dialog" aria-labelledby="modalUserAddTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -197,7 +204,7 @@
                                 <input class="form-control" type="password" name="password" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="password_confirmation" class="col-form-label text-burdeos">Repita la Contraseña:</label>
+                                <label for="password_confirmation" class="col-form-label text-burdeos">Contraseña:</label>
                                 <input class="form-control" type="password" name="password_confirmation" required>
                             </div>
                         </div>
@@ -210,12 +217,15 @@
             </div>
         </div>
     </div>
-    <!-- End Modal User Add -->        
- 
+    <!-- End Modal User Add -->    
 @stop
 
 @section('scripts')
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>    
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/autofill/2.3.4/js/dataTables.autoFill.min.js"></script> -->
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/autofill/2.3.4/js/autoFill.bootstrap4.min.js"></script> -->
+
 
     <script>
         $(document).ready(function() {
@@ -240,7 +250,7 @@
                     "infoFiltered": "(Filtrado de _MAX_ total entradas)",
                     "infoPostFix": "",
                     "thousands": ",",
-                    "lengthMenu": "Mostrando _MENU_",
+                    "lengthMenu": "Mostrar _MENU_ Entradas",
                     "loadingRecords": "Cargando...",
                     "processing": "Procesando...",
                     "search": "",
@@ -254,7 +264,7 @@
                 },
                 "lengthMenu":		[[5, 10, 20, 30, 50, 100, -1], [ 5, 10, 20, 30, 50, 100, "Todos"]],
                 "iDisplayLength":	10,
-                "bJQueryUI":		true,
+                "bJQueryUI":		false,
                 "aoColumns":[
                     {"bSortable": true},
                     {"bSortable": true},

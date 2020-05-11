@@ -39,8 +39,6 @@ Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::post('/users/add', 'UserController@store'); // agregar
 });    
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::prefix('admin')->namespace('Admin\Menu')->middleware(['auth'])
     ->group(function () {
         //rutas de categorias del menu

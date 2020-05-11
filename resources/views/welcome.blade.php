@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appGuest')
 
 @section('title', 'La Carreta')
 
@@ -7,7 +7,6 @@
 @stop
 
 @section('content')
-        @include('includes.navbar')  
     <section class="ftco-cover" style="background-image: url({{ asset('/images/bg_3.jpg') }});" id="section-home">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center ftco-vh-100">
@@ -546,8 +545,8 @@
         </div>
       </div>
     </section>
-    <!-- END section -->  
-    @include('includes.footer')             
+    <!-- END section -->     
+ 
 @stop
 
 @section('scripts')
