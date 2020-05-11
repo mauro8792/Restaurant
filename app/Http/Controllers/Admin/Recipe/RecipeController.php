@@ -6,6 +6,7 @@ use App\Model\Recipe;
 use App\Model\RecipeImage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use File;
 
 class RecipeController extends Controller
 {
@@ -50,5 +51,46 @@ class RecipeController extends Controller
         $images = $recipe->images()->get();
         //dd($images);
         return view('admin.recipes.recipes.images.index')->with(compact('recipe', 'images'));
+    }
+    public function addImage(Request $request){
+
+        $file = $request->file('image');
+    	$path = public_path() . '/images/recipes/recipes';
+	    $fileName = uniqid() . $file->getClientOriginalName();
+    	$moved = $file->move($path, $fileName);
+    	
+    	// crear 1 registro en la tabla product_images
+    	if ($moved) {
+	    	$recipeImage = new RecipeImage();
+	    	$recipeImage->image = $fileName;
+	    	$recipeImage->recipe_id = $request->recipe_id;
+	    	$recipeImage->save(); // INSERT
+    	}
+    	return back();
+    }
+    public function deleteImage(Request $request){
+        // eliminar el archivo
+        //$productImage = ProductImage::find($request->input('image_id'));
+        $recipeImage = RecipeImage::find($request->input('image_id'));
+    	if (substr($recipeImage->image, 0, 4) === "http") {
+    		$deleted = true;
+    	} else {
+    		$fullPath = public_path().'/images/recipes/recipes/'.$recipeImage->image;
+    		$deleted = File::delete($fullPath);
+    	}
+
+    	// eliminar el registro de la img en la bd
+    	if ($deleted) {
+    		$recipeImage->delete();
+    	}
+
+    	return back();
+    }
+    public function destroy(Request $request){
+        
+        $recipe = Recipe::find($request->id);
+        //dd($recipe);
+        $recipe->delete();
+        return back();
     }
 }
