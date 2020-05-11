@@ -45,6 +45,17 @@
                         <input type="string" name="video">
                     </div>
                 </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label class="control-label">Categoría de la receta</label>
+                        <select class="form-control" name="recipecategory_id">
+                            
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <p>&nbsp;</p>
                 <div class="row">
                     <div class="col-sm-12">

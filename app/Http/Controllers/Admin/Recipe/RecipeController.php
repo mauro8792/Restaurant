@@ -16,7 +16,8 @@ class RecipeController extends Controller
     }
     public function create()
     {
-    	return view('admin.recipes.recipes.create'); // formulario de registro
+        $categories = Recipecategory::all();
+    	return view('admin.recipes.recipes.create')->with(compact('categories')); // formulario de registro
     }
     public function store(Request $request)
     {
@@ -25,7 +26,7 @@ class RecipeController extends Controller
         $recipe->ingredients= $request->ingredients;
         $recipe->description= $request->description;
         $recipe->video= $request->video;
-        $recipe->recipecategory_id = 2;
+        $recipe->recipecategory_id = $request->recipecategory_id;
         $recipe->save();
 
         $files = $request->file('image');
