@@ -45,8 +45,8 @@ class UserController extends Controller
             'name.required' => 'Es necesario ingresar un nombre.',
             'name.min' => 'El nombre debe tener al menos 3 caracteres.',
             'email.required' => 'Es necesario ingresar un eMail.',
-            'email.unique' => 'El eMail está en uso.',
-            'email.email' => 'El eMail no es válido.',
+            'email.unique' => 'El eMail estÃ¡ en uso.',
+            'email.email' => 'El eMail no es vÃ¡lido.',
         ];
         $rules = [
             'name' => 'required|min:3',
@@ -100,8 +100,8 @@ class UserController extends Controller
             'name.required' => 'Es necesario ingresar un nombre.',
             'name.min' => 'El nombre debe tener al menos 3 caracteres.',
             'email.required' => 'Es necesario ingresar un eMail.',
-            'email.unique' => 'El eMail está en uso.',
-            'email.email' => 'El eMail no es válido.',
+            'email.unique' => 'El eMail estÃ¡ en uso.',
+            'email.email' => 'El eMail no es vÃ¡lido.',
         ];
         $rules = [
             'name' => 'required|min:3',
@@ -126,7 +126,7 @@ class UserController extends Controller
     {
         try {
             User::findOrFail($request->id)->delete();
-            $notification = "El registro se eliminó correctamente";
+            $notification = "El registro se eliminÃ³ correctamente";
         } catch (QueryException $exception){
             $notification = "Error al eliminar el registro".$exception->getMessage();
         }

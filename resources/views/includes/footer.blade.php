@@ -40,9 +40,10 @@
             </div>
           </div>
 -->
-          <div class="col-md-4 mt-3">
+          <div class="col-md-6 mt-3">
             <div class="ftco-footer-widget mb-4">
               <ul class="ftco-footer-social list-unstyled float-md-right float-lft">
+                <!-- <li class="ftco-animate mr-4"><img src="{{ asset('/images/LogoLaCarreta.jpg') }}"  height="100"></li>                 -->
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>

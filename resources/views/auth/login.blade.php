@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.appAuth')
 
 @section('content')
-<div class="ftco-section container">
+<div class="ftco-section " style="background-image: url({{ asset('/images/bg_3.jpg') }});">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
