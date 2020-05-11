@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Menu;
 use App\Model\Product;
 use App\Model\Category;
+use File;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -112,7 +113,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
         $messages = [
             'name.required' => 'Es necesario ingresar un nombre para el producto.',
@@ -129,14 +130,32 @@ class ProductController extends Controller
             'price' => 'required|numeric|min:0'
         ];
         $this->validate($request, $rules, $messages);
-        // dd($request->all());
+        
         $product = Product::find($id);
         $product->name = $request->input('name');
         $product->description = $request->input('description');
         $product->price = $request->input('price');
-        $product->status = $request->input('status');
-        $product->long_description = $request->input('long_description');
         $product->category_id = $request->category_id == 0 ? null : $request->category_id;
+        $product->save();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = public_path() . '/images/products';
+            $fileName = uniqid() . '-' . $file->getClientOriginalName();
+            $moved = $file->move($path, $fileName);
+
+            // update category
+            if ($moved) {
+                $previousPath = $path . '/' . $product->image;
+
+                $product->image = $fileName;
+                $saved = $product->save(); // UPDATE
+
+                if ($saved)
+                    File::delete($previousPath);
+            }
+        }
+        
         $product->save(); // UPDATE
 
         return redirect('/admin/products');
@@ -152,7 +171,10 @@ class ProductController extends Controller
     {
     
         try {
-            Product::findOrFail($request->id)->delete();
+            $product=Product::findOrFail($request->id);
+            $file_path = public_path()."/images/products/".$product->image;
+            \File::delete($file_path);
+            $product->delete();
             $notification = "El registro se eliminó correctamente";
         } catch (QueryException $exception){
             $notification = "Error al eliminar el registro".$exception->getMessage();
