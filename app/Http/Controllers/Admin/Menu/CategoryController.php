@@ -10,7 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-    	$categories = Category::orderBy('name')->paginate(15);
+        $categories = Category::orderBy('name')->paginate(15);
     	return view('admin.categories.index')->with(compact('categories')); // listado
     }
 
@@ -115,7 +115,8 @@ class CategoryController extends Controller
     {  
 
        // $cat2 = Category::findOrFail($request->id);
-        $cat = Category::findOrFail($request->id);
+        $cat = Category::findOrFail($request->id)->recipes;
+        dd($cat);
         if(sizeof($cat->products) == 0){
             //dd(sizeof($cat2->products));
             try {
