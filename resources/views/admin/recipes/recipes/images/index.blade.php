@@ -10,10 +10,11 @@
         <div class="section text-white">
             <h2 class="text-center">Imágenes de la receta {{ $recipe->name }}</h2>
             <p>&nbsp;</p>
-            <form method="post" action="" enctype="multipart/form-data">
+            <form method="post" action="{{ url('/admin/recipes/agregar-imagen') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
-                <input type="file" name="photo" required>
-                <button type="submit" class="btn btn-primary btn-round">Subir nueva imagen</button>&nbsp; <a href="{{ url('/admin/products') }}" class="btn btn-warning btn-round">Volver al listado de productos</a>
+                <input type="file" name="image" required>
+                <input type='hidden' name="recipe_id" value='{{$recipe->id}}'>
+                <button type="submit" class="btn btn-primary btn-round">Subir nueva imagen</button>&nbsp; <a href="{{ url('/admin/recipes/') }}" class="btn btn-warning btn-round">Volver al listado de recetas</a>
             </form>
 
             <hr class="text-white">
@@ -26,7 +27,7 @@
                 <div class="card text-center m-1">
                     <img src="{{ $image->featured_image_url }}" width="250" class="m-1">
                     <div class="card-body">
-                        <form method="post" action="">
+                        <form method="post" action="{{ url('/admin/recipes/eliminar-imagen') }}">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <input type="hidden" name="image_id" value="{{ $image->id }}">

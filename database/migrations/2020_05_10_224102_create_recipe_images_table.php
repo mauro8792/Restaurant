@@ -17,7 +17,7 @@ class CreateRecipeImagesTable extends Migration
             $table->increments('id');
             $table->string('image');
             $table->integer('recipe_id')->unsigned(); 
-            $table->foreign('recipe_id')->references('id')->on('recipes');
+            $table->foreign('recipe_id')->references('id')->on('recipes')->onDelete('cascade');;
             $table->timestamps();
         });
     }
