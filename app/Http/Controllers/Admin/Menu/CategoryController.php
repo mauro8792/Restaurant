@@ -113,12 +113,8 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {  
-
        $cat = Category::findOrFail($request->id);
-        //$cat = Category::findOrFail($request->id)->recipes;
-        //dd($cat);
         if(sizeof($cat->products) == 0){
-            //dd(sizeof($cat2->products));
             try {
                 $cat = Category::findOrFail($request->id);
                 $file_path = public_path()."/images/categories/".$cat->image;
