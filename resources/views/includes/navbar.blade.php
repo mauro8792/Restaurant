@@ -20,8 +20,9 @@
                 <a href="#" id="navbarDropdownMenuLink" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a href="{{ url('/admin/users') }}" class="dropdown-item" title="Proyectos"><i class="fa fa-user"></i>&nbsp;Usuarios</a>
-                  <a href="{{ url('/admin/categories') }}" class="dropdown-item" title="Productos"><i class="fa fa-book"></i>&nbsp;Menu</a>
-                  <a href="{{ url('/admin/catering') }}" class="dropdown-item" title="Productos"><i class="fas fa-concierge-bell"></i>&nbsp;Catering</a>                  
+                  <a href="{{ url('/admin/categories') }}" class="dropdown-item" title="Productos"><i class="fa fa-map"></i>&nbsp;Menu</a>
+                  <a href="{{ url('/admin/caterings') }}" class="dropdown-item" title="Productos"><i class="fas fa-concierge-bell"></i>&nbsp;Catering</a>                  
+                  <a href="{{ url('/admin/recipe') }}" class="dropdown-item" title="Recetas"><i class="fas fa-folder-open"></i>&nbsp;Recetas</a>                      
                   <a href="{{ route('logout') }}" class="dropdown-item" title="Log Out"><i class="fas fa-sign-out-alt"></i>&nbsp;Cerrar Cesión</a>
                 </div>
               </li>

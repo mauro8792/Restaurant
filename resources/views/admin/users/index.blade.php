@@ -1,7 +1,6 @@
 @extends('layouts.appAdmin')
 
-
-@section('title', 'La Carreta')
+@section('title', 'Usuarios')
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.css"/>    
@@ -11,9 +10,9 @@
     <section class="mb-4">
       <div class="container mt-3">
 
-              <div class="div_trans8 corner4 p-5">
+              <div class="div_trans8 corner4 p-3">
                   <div class="text-white">
-                      <h2 class="text-center text-white mt-2">Listado de Usuarios</h2>
+                      <h2 class="text-center text-white">Listado de Usuarios</h2>
                       @if (session('notification'))
                           <div class="alert alert-success">
                               {{ session('notification') }}

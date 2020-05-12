@@ -1,6 +1,8 @@
 @extends('layouts.appAdmin')
 
-@section('title', 'La Carreta')
+@section('title', 'Menú - Categorías')
+
+@section('body-class', 'categories-page')
 
 @section('styles')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.css"/>  
@@ -10,9 +12,10 @@
     <section class="mb-4">
       <div class="container mt-3">
 
-              <div class="div_trans8 corner4  p-5">
+              <div class="div_trans8 corner4 p-3">
                   <div class="text-white">
-                      <h2 class="text-center text-white mt-2">Menú - Listado de Categorías</h2>
+                      <h2 class="text-center text-white">Menú</h2>                  
+                      <h3 class="text-center text-white">Listado de Categorías</h3>
                       @if (session('notification'))
                           <div class="alert alert-success">
                               {{ session('notification') }}
@@ -47,20 +50,14 @@
                                           @foreach ($categories as $category)
                                           <tr>
                                             <td class="text-left">{{ $category->name }}</td>
-
-                                            @if($category->show==1)
-                                                <td class="text-center"><i class="fa fa-eye text-burdeos"></i></td>    
-                                            @else
-                                                <td class="text-center"><i class="fa fa-eye-slash text-burdeos"></i></td>    
-                                            @endif
-                                                                                      
+                                            <?php $show = ($category->show)?"fa fa-eye":"fa fa-eye-slash";?>
+                                            <td class="text-center"><i class="{{ $show }} text-burdeos"></i></td>                                                                                       
                                             <td class="text-center"><img src="{{ $category->featured_image_url }}" height="50"></td>
                                             <td class="text-right">
-                                                    <input type="hidden" name="id" value="{{ $category->id }}">
                                                     <a href="#modalCategoryDetail{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDetail{{$category->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
                                                     <a href="#modalCategoryEdit{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar Usuario {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryEdit{{$category->id}}"><i class="fa fa-edit t-blue"></i></a>
                                                     <a href="#modalCategoryDelete{{$category->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar Usuario {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDelete{{$category->id}}"><i class="fa fa-times t-red"></i></a>
-                                                    <a href="{{ url('/admin/categories/'.$category->id.'/products') }}" class="btn btn-outline-dark btn-sm" type="submit" target="_blank" title="Listado de Productos de {{ $category->name }}"><i class="fa fa-beer text-burdeos"></i></a>
+                                                    <a href="{{ url('/admin/categories/'.$category->id.'/products') }}" class="btn btn-outline-dark btn-sm" type="submit" title="Listado de Productos de {{ $category->name }}"><i class="fa fa-beer text-burdeos"></i></a>
                                             </td>
                                           </tr>
 
@@ -182,6 +179,7 @@
                                           @endforeach
                                       </tbody>
                                   </table>
+
                                   @else
                                       <h4 class="text-white">No hay Categorías cargadas</h4>
                                   @endif
@@ -190,9 +188,6 @@
                       </div>
                   </div>
               </div>
-
-                  <p>&nbsp;</p>
-
         </div>
       </div>
     

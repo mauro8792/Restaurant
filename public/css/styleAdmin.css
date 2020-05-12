@@ -80,8 +80,7 @@ html {
   cursor: pointer;
   padding-left: 30px;
   padding-right: 30px;
-  font-size: 16px;
-  font-family: "Playfair Display", serif; }
+  font-size: 16px; }
   .btn.btn-lg {
     font-size: 16px !important;
     padding: 13px 40px !important; }
