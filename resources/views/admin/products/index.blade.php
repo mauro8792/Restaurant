@@ -8,7 +8,7 @@
 
     <div class="container div_trans8 corner4 mt-4 mb-4 p-4">
         <div class="text-white">
-            <h2 class="text-center">Listado de productos</h2>
+        <h2 class="text-center">Listado de productos de la categoria: {{$category->name}}</h2>
             @if (session('notification'))
                 <div class="alert alert-success">
                     {{ session('notification') }}
@@ -17,7 +17,7 @@
             <p>&nbsp;</p>
             <div class="">
                 <div class="text-center">
-                    <p><a href="{{ url('/admin/products/create') }}" class="btn btn-info btn-round">Nuevo producto</a></p>
+                    <p><a href="{{ url('/admin/categories/'. $category->id.'/products/create') }}" class="btn btn-info btn-round">Nuevo producto</a></p>
                     <div class="row table-responsive-sm">
                         <div class="col-md-12">
                         @if(count($products)>0)

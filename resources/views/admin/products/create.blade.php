@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appAdmin')
 
 @section('body-class', 'product-page')
 
@@ -36,13 +36,8 @@
                     </div>
                     <div class="col-sm-5">
                         <div class="form-group">
-                            <label class="control-label">Categoría del producto</label>
-                            <select class="form-control" name="category_id">
-                                
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
+                            <label class="control-label">Categoría del producto: {{$category->name}} </label>
+                            <input type="hidden" name="category_id" value="{{$category->id}}">
                         </div>
                     </div>
 

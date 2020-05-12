@@ -14,10 +14,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::paginate(10);
-    	return view('admin.products.index')->with(compact('products')); // listado
+        $category = Category::find($request->id);
+        $products = $category->products; 
+    	return view('admin.products.index')->with(compact('products','category')); // listado
     }
     
     /**
@@ -25,11 +26,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        
-        $categories = Category::orderBy('name')->get();
-    	return view('admin.products.create')->with(compact('categories')); // formulario de registro
+        $category = Category::find($request->id);
+    	return view('admin.products.create')->with(compact('category')); // formulario de registro
     }
 
     /**
@@ -70,15 +70,12 @@ class ProductController extends Controller
             $fileName = uniqid() . '-' . $file->getClientOriginalName();
             $moved = $file->move($path, $fileName);
 
-            
             if ($moved) {
                 $product->image = $fileName;
                 $product->save(); // UPDATE
             }
         }
-        
-
-        return redirect('/admin/products');
+         return redirect('/admin/categories/'.$request->category_id.'/products');
     }
 
     /**
@@ -99,8 +96,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        $status = $this->statusArray();
+    {        
         $categories = Category::orderBy('name')->get();
         $product = Product::find($id);
         return view('admin.products.edit')->with(compact('product', 'categories','status')); // form de edición
@@ -158,7 +154,7 @@ class ProductController extends Controller
         
         $product->save(); // UPDATE
 
-        return redirect('/admin/products');
+        return redirect('/admin/categories/'.$request->category_id.'/products');
     }
 
     /**
