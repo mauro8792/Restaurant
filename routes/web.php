@@ -49,8 +49,8 @@ Route::prefix('admin')->namespace('Admin\Menu')->middleware(['auth'])
         Route::post('/categories/{category}/edit', 'CategoryController@update'); // actualizar
         Route::delete('/categories', 'CategoryController@destroy'); // form eliminar
         //rutas de productos del menu
-        Route::get('/products', 'ProductController@index'); // listado
-        Route::get('/products/create', 'ProductController@create'); // formulario
+        Route::get('/categories/{id}/products', 'ProductController@index'); // listado
+        Route::get('/categories/{id}/products/create', 'ProductController@create'); // formulario
         Route::post('/products', 'ProductController@store'); // registrar
         Route::get('/products/{id}/edit', 'ProductController@edit'); // formulario edición
         Route::post('/products/{id}/edit', 'ProductController@update'); // actualizar

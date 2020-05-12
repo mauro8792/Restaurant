@@ -60,7 +60,7 @@
                                                     <a href="#modalCategoryDetail{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDetail{{$category->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
                                                     <a href="#modalCategoryEdit{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar Usuario {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryEdit{{$category->id}}"><i class="fa fa-edit t-blue"></i></a>
                                                     <a href="#modalCategoryDelete{{$category->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar Usuario {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDelete{{$category->id}}"><i class="fa fa-times t-red"></i></a>
-                                                    <a href="#{{$category->id}}" class="btn btn-outline-dark btn-sm" type="submit" target="_blank" title="Listado de Productos de {{ $category->name }}"><i class="fa fa-beer text-burdeos"></i></a>
+                                                    <a href="{{ url('/admin/categories/'.$category->id.'/products') }}" class="btn btn-outline-dark btn-sm" type="submit" target="_blank" title="Listado de Productos de {{ $category->name }}"><i class="fa fa-beer text-burdeos"></i></a>
                                             </td>
                                           </tr>
 
@@ -106,7 +106,7 @@
                                                           <h5 class="modal-title text-white" id="modalCategoryEdit{{$category->id}}Title">Modificar Datos de  {{ $category->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
-                                                      <form method="post" action="{{ url('/admin/categorys/edit') }}">
+                                                      <form method="post" action="{{ url('/admin/categories/'.$category->id.'/edit') }}" enctype="multipart/form-data">
                                                       <div class="modal-body text-left">
                                                           {{ csrf_field() }}
                                                           <input type="hidden" name="id" value="{{ $category->id }}">

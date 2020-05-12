@@ -10,9 +10,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-
     	$categories = Category::orderBy('name')->get();
-
     	return view('admin.categories.index')->with(compact('categories')); // listado
     }
 
@@ -31,8 +29,7 @@ class CategoryController extends Controller
     {
         $this->validate($request, Category::$rules, Category::$messages);
 
-        $category = Category::create($request->only('name', 'description'));
-        
+        $category = Category::create($request->only('name', 'description'));       
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -85,7 +82,7 @@ class CategoryController extends Controller
         $this->validate($request, Category::$rules, Category::$messages);
 
         $category->update($request->only('name', 'description'));
-
+        //dd($request->file('image'));
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $path = public_path() . '/images/categories';
@@ -97,6 +94,7 @@ class CategoryController extends Controller
                 $previousPath = $path . '/' . $category->image;
 
                 $category->image = $fileName;
+                //dd($fileName);
                 $saved = $category->save(); // UPDATE
 
                 if ($saved)
@@ -116,9 +114,9 @@ class CategoryController extends Controller
     public function destroy(Request $request)
     {  
 
-       // $cat2 = Category::findOrFail($request->id);
-        $cat = Category::findOrFail($request->id)->recipes;
-        dd($cat);
+       $cat = Category::findOrFail($request->id);
+        //$cat = Category::findOrFail($request->id)->recipes;
+        //dd($cat);
         if(sizeof($cat->products) == 0){
             //dd(sizeof($cat2->products));
             try {
