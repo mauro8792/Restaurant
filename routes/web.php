@@ -82,8 +82,8 @@ Route::prefix('admin/recipes')->namespace('Admin\Recipe')->middleware(['auth'])
 Route::prefix('admin/')->namespace('Admin\Recipe')->middleware(['auth'])
     ->group(function () {
         //rutas de recetas
-        Route::get('recipes', 'RecipeController@index'); // listado
-        Route::get('/recipes/create', 'RecipeController@create'); // formulario
+        Route::get('/recipe-book/{id}/recipes', 'RecipeController@index'); // listado
+        Route::get('/recipe-book/{id}/recipes/create', 'RecipeController@create'); // formulario
         Route::post('/recipes/agregar-imagen', 'RecipeController@addImage'); // formulario
         Route::delete('/recipes/eliminar-imagen', 'RecipeController@deleteImage'); // formulario
         Route::post('/recipes', 'RecipeController@store'); // registrar

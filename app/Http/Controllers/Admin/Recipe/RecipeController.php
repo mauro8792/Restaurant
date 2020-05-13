@@ -10,18 +10,21 @@ use File;
 
 class RecipeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {   
-    	$recipes = Recipe::all();
-    	return view('admin.recipes.recipes.index')->with(compact('recipes')); // listado
+        $category = Recipecategory::find($request->id);
+    	$recipes = $category->recipes;
+    	return view('admin.recipes.recipes.index')->with(compact('recipes','category')); // listado
     }
-    public function create()
-    {
-        $categories = Recipecategory::all();
-    	return view('admin.recipes.recipes.create')->with(compact('categories')); // formulario de registro
+    public function create(Request $request)
+    {   
+        //dd($request->id);
+        $category = Recipecategory::find($request->id);
+    	return view('admin.recipes.recipes.create')->with(compact('category')); // formulario de registro
     }
     public function store(Request $request)
     {
+        //dd('hola');
         $recipe = new Recipe();
         $recipe->name= $request->name; 
         $recipe->ingredients= $request->ingredients;
@@ -43,7 +46,7 @@ class RecipeController extends Controller
                 $recipeImage->recipe_id = $recipe->id;
                 $recipeImage->save();
             }
-        return redirect('/admin/recipes');
+        return redirect('/admin/recipe-book/'.$request->recipecategory_id.'/recipes');
     }
     public function indeximage($id){
         

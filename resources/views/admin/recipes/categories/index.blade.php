@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appAdmin')
 
 @section('title', 'Listado de categorías')
 
@@ -45,7 +45,7 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <input type="hidden" name="id" value="{{ $category->id }}">
-                                            {{-- <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancelar</button> --}}
+                                            <a href="{{ url('/admin/recipe-book/'. $category->id .'/recipes') }}" class="btn btn-outline-dark btn-sm" type="submit" title="Listado de Productos de "><i class="fa fa-beer text-burdeos"></i></a>
                                             <button class="btn btn-outline-danger" type="submit" title="Eliminar {{ $category->name }}"><i class="fa fa-times"></i> Eliminar</button>
                                         </form>
                                     </td>

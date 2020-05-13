@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appAdmin')
 
 @section('title', 'Listado de categorías')
 
@@ -9,7 +9,7 @@
 
     <div class="container div_trans8 corner4 mt-4 mb-4 p-4">
         <div class="section text-white">
-            <h2 class="text-center">Listado de categorías</h2>
+        <h2 class="text-center">Listado de recetas de la categoria: {{$category->name}}</h2>
             @if (session('notification'))
                 <div class="alert alert-success">
                     {{ session('notification') }}
@@ -18,7 +18,7 @@
             <p>&nbsp;</p>
             <div class="">
                 <div class="text-center">
-                    <p><a href="{{ url('/admin/recipes/create') }}" class="btn btn-info btn-round">Nueva Receta</a></p>
+                    <p><a href="{{ url('/admin/recipe-book/'.$category->id.'/recipes/create') }}" class="btn btn-info btn-round">Nueva Receta</a></p>
                     <div class="row table-responsive-sm">
                         <div class="col-md-12">
                         @if(count($recipes)>0)
