@@ -25,7 +25,7 @@
                     <p>&nbsp;</p>
                     <div class="">
                         <div class="text-left">
-                            <p class="text-center"><a href="#modalProductAdd" class="btn btn-burdeos btn-round" data-toggle="modal"  data-target="#modalProductAdd">Nuevo producto</a></p>                        
+                            <p class="text-center"><a href="#modalProductAdd" class="btn btn-burdeos btn-round" data-toggle="modal"  data-target="#modalProductAdd">Nuevo Producto</a></p>                        
                             <div class="row table-responsive-sm">
                                 <div class="col-md-12">
                                 @if(count($products)>0)
@@ -41,13 +41,13 @@
                                     <tbody>
                                         @foreach ($products as $product)
                                         <tr>
-                                            <td class="text-left">{{ $product->name }}</td>
-                                            <td class="text-left">{{ Str::limit($product->description,35,'...') }}</td>                                 
+                                            <td class="text-left" data-toggle="tooltip" title="{{ $product->name }}">{{ Str::limit($product->name,35,'...') }}</td>                                            
+                                            <td class="text-left" data-toggle="tooltip" title="{{ $product->description }}">{{ Str::limit($product->description,35,'...') }}</td>                                                                           
                                             <td class="text-right">@if($product->price>0)$@endif {{ $product->price }}</td>
                                             <td class="text-right">
                                                 <a href="#modalProductDetail{{$product->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $product->name }}" data-toggle="modal"  data-target="#modalProductDetail{{$product->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
-                                                <a href="#modalProductEdit{{$product->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar Producto {{ $product->name }}" data-toggle="modal"  data-target="#modalProductEdit{{$product->id}}"><i class="fa fa-edit t-blue"></i></a>
-                                                <a href="#modalProductDelete{{$product->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar Producto {{ $product->name }}" data-toggle="modal"  data-target="#modalProductDelete{{$product->id}}"><i class="fa fa-times t-red"></i></a>
+                                                <a href="#modalProductEdit{{$product->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $product->name }}" data-toggle="modal"  data-target="#modalProductEdit{{$product->id}}"><i class="fa fa-edit t-blue"></i></a>
+                                                <a href="#modalProductDelete{{$product->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar {{ $product->name }}" data-toggle="modal"  data-target="#modalProductDelete{{$product->id}}"><i class="fa fa-times t-red"></i></a>
                                             </td>                                            
                                         </tr>  
                                           <!-- Modal Product Detail -->
@@ -219,12 +219,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>   
 
     <script>
-        $(document).ready(function() {
-            // show the alert
-            setTimeout(function() {
-                $(".alert").alert('close');
-            }, 3000);
-        });
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 2000);
 
 
         $('#modalProductAdd').on('shown.bs.modal', function (e) {

@@ -49,14 +49,14 @@
                                       <tbody>
                                           @foreach ($caterings as $catering)
                                           <tr>
-                                            <td class="text-left">{{ $catering->name }}</td>
-                                            <td class="text-left">{{ Str::limit($catering->description,45,'...') }}</td>                                                                                       
+                                            <td class="text-left" data-toggle="tooltip" title="{{ $catering->name }}">{{ Str::limit($catering->name,35,'...') }}</td>                                            
+                                            <td class="text-left" data-toggle="tooltip" data-placement="top" title="{{ $catering->description }}">{{ Str::limit($catering->description,45,'...') }}</td>                                                                                       
                                             <td class="text-right">{{ $catering->price }}</td>                                             
                                             <td class="text-center"><img src="{{ $catering->featured_image_url }}" height="50"></td>
                                             <td class="text-right">
                                                     <a href="#modalCateringDetail{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringDetail{{$catering->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
-                                                    <a href="#modalCateringEdit{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar Usuario {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringEdit{{$catering->id}}"><i class="fa fa-edit t-blue"></i></a>
-                                                    <a href="#modalCateringDelete{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar Usuario {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringDelete{{$catering->id}}"><i class="fa fa-times t-red"></i></a>
+                                                    <a href="#modalCateringEdit{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringEdit{{$catering->id}}"><i class="fa fa-edit t-blue"></i></a>
+                                                    <a href="#modalCateringDelete{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringDelete{{$catering->id}}"><i class="fa fa-times t-red"></i></a>
                                             </td>
                                           </tr>
 
@@ -201,7 +201,7 @@
                                   </table>
 
                                   @else
-                                      <h4 class="text-white">No hay Categorías cargadas</h4>
+                                      <h4 class="text-white">No hay Caterings cargados</h4>
                                   @endif
                                   </div>
                           </div>
@@ -269,12 +269,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>   
 
     <script>
-        $(document).ready(function() {
-            // show the alert
-            setTimeout(function() {
-                $(".alert").alert('close');
-            }, 3000);
-        });
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 2000);
 
 
         $('#modalCateringAdd').on('shown.bs.modal', function (e) {
