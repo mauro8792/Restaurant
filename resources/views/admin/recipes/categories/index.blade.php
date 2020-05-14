@@ -48,7 +48,7 @@
                                                 <a href="#modalCategoryDetail{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDetail{{$category->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
                                                 <a href="#modalCategoryEdit{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryEdit{{$category->id}}"><i class="fa fa-edit t-blue"></i></a>
                                                 <a href="#modalCategoryDelete{{$category->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDelete{{$category->id}}"><i class="fa fa-times t-red"></i></a>
-                                                <a href="{{ url('/admin/recipes/categories/'.$category->id.'/recipes') }}" class="btn btn-outline-dark btn-sm" type="submit" title="Listado de Recetas de {{ $category->name }}"><i class="fa fa-beer text-burdeos"></i></a>
+                                                <a href="{{ url('/admin/recipe-book/'.$category->id.'/recipes') }}" class="btn btn-outline-dark btn-sm" type="submit" title="Listado de Recetas de {{ $category->name }}"><i class="fa fa-beer text-burdeos"></i></a>
                                         </td>
                                     </tr>
 
@@ -57,8 +57,8 @@
                                           <div class="modal fade t-black text-center" id="modalCategoryDetail{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="modalCategoryDetail{{$category->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header text-center bg-burdeos">
-                                                          <h5 class="modal-title text-white" id="modalCategoryDetail{{$category->id}}Title">Detalle de {{ $category->name }}</h5>
+                                                      <div class="modal-header text-center bg-yellow">
+                                                          <h5 class="modal-title text-black" id="modalCategoryDetail{{$category->id}}Title">Detalle de {{ $category->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
                                                       <div class="modal-body text-left">
@@ -69,18 +69,18 @@
                                                             </div>                                                             
                                                             <div class="row">
                                                                 <div class="col-md-12 text-burdeos">
-                                                                    <p class="text-burdeos">Categoría: {{ $category->name}}</p>
+                                                                    <p class="text-burdeos"><b>Categoría:</b><BR>{{ $category->name}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Descripción: {{ $category->description}}</p>
+                                                                    <p class="text-burdeos"><b>Descripción:</b><BR>{{ $category->description}}</p>
                                                                 </div>
                                                             </div>
                                                       </div>
 
                                                       <div class="modal-footer">
-                                                          <button type="button" class="btn btn-burdeos" data-dismiss="modal">Cerrar</button>
+                                                          <button type="button" class="btn bg-yellow t-black" data-dismiss="modal">Cerrar</button>
                                                       </div>
                                                   </div>
                                               </div>
@@ -91,7 +91,7 @@
                                           <div class="modal fade t-black" id="modalCategoryEdit{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="modalCategoryEdit{{$category->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header bg-burdeos">
+                                                      <div class="modal-header bg-blue">
                                                           <h5 class="modal-title text-white" id="modalCategoryEdit{{$category->id}}Title">Modificar Datos de  {{ $category->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
@@ -101,11 +101,11 @@
                                                           <input type="hidden" name="id" value="{{ $category->id }}">
 
                                                           <div class="form-group">
-                                                              <label for="name" class="col-form-label text-burdeos">Nombre:</label>
+                                                              <label for="name" class="col-form-label text-burdeos"><b>Nombre:</b></label>
                                                               <input class="form-control" type="text" name="name" value="{{ $category->name }}" autofocus/>
                                                           </div>
                                                           <div class="form-group">
-                                                              <label for="image" class="col-form-label text-burdeos">Imágen: </label>
+                                                              <label for="image" class="col-form-label text-burdeos"><b>Imágen:</b> </label>
                                                               <input class="form-control" type="file" name="image" value="{{ $category->image }}">
                                                                 @if ($category->image)
                                                                 <p class="font12">
@@ -115,13 +115,13 @@
                                                                 @endif                                                              
                                                           </div>
                                                           <div class="form-group">
-                                                              <label for="email" class="col-form-label text-burdeos">Descipción</label>
+                                                              <label for="description" class="col-form-label text-burdeos"><b>Descipción</b></label>
                                                               <textarea class="form-control" placeholder="Descripción" rows="5" name="description">{{ $category->description }}</textarea>
                                                           </div>                                                          
                                                       </div>
                                                       <div class="modal-footer">
                                                           <button type="button" class="btn btn-outline-burdeos" data-dismiss="modal">Cerrar</button>
-                                                          <button type="submit" class="btn btn-burdeos">Modificar</button>
+                                                          <button type="submit" class="btn bg-blue t-white">Modificar</button>
                                                       </div>
                                                   </form>
                                               </div>
@@ -145,12 +145,12 @@
                                                             </div>                                                          
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">{{ $category->name}}</p>
+                                                                    <p class="text-burdeos"><b>Nombre:</b><BR>{{ $category->name}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Descripción: {{ $category->description}}</p>
+                                                                    <p class="text-burdeos"><b>Descripción:</b><BR>{{ $category->description}}</p>
                                                                 </div>
                                                             </div>
                                                       </div>

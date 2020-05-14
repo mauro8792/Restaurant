@@ -34,7 +34,7 @@ class RecipeController extends Controller
         $recipe->save();
 
         $files = $request->file('image');
-
+        if($files){
             foreach ($files as $file) {
                 
                 $path = public_path() . '/images/recipes/recipes';
@@ -46,6 +46,7 @@ class RecipeController extends Controller
                 $recipeImage->recipe_id = $recipe->id;
                 $recipeImage->save();
             }
+        }
         return redirect('/admin/recipe-book/'.$request->recipecategory_id.'/recipes');
     }
     public function indeximage($id){
