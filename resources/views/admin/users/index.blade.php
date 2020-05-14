@@ -59,25 +59,25 @@
                                           <div class="modal fade t-black text-center" id="modalUserDetail{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modalUserDetail{{$user->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header text-center bg-burdeos">
-                                                          <h5 class="modal-title text-white" id="modalUserDetail{{$user->id}}Title">Detalle de {{ $user->name }}</h5>
+                                                      <div class="modal-header text-center bg-yellow">
+                                                          <h5 class="modal-title text-black" id="modalUserDetail{{$user->id}}Title">Detalle de {{ $user->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
                                                       <div class="modal-body text-left">
                                                           <div class="row">
                                                               <div class="col-md-12 text-burdeos">
-                                                                  <p class="text-burdeos">{{ $user->name}}</p>
+                                                                  <p class="text-burdeos"><b>Nombre:</b><BR>{{ $user->name}}</p>
                                                               </div>
                                                           </div>
                                                           <div class="row">
                                                               <div class="col-md-12">
-                                                                  <p class="text-burdeos">E-Mail: {{ $user->email}}</p>
+                                                                  <p class="text-burdeos"><b>E-Mail:</b><BR>{{ $user->email}}</p>
                                                               </div>
                                                           </div>
                                                       </div>
 
                                                       <div class="modal-footer">
-                                                          <button type="button" class="btn btn-burdeos" data-dismiss="modal">Cerrar</button>
+                                                          <button type="button" class="btn bg-yellow t-black" data-dismiss="modal">Cerrar</button>
                                                       </div>
                                                   </div>
                                               </div>
@@ -88,7 +88,7 @@
                                           <div class="modal fade t-black" id="modalUserEdit{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="modalUserEdit{{$user->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header bg-burdeos">
+                                                      <div class="modal-header bg-blue">
                                                           <h5 class="modal-title text-white" id="modalUserEdit{{$user->id}}Title">Modificar Datos de  {{ $user->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
@@ -98,17 +98,17 @@
                                                           <input type="hidden" name="id" value="{{ $user->id }}">
 
                                                           <div class="form-group">
-                                                              <label for="name" class="col-form-label text-burdeos">Nombre:</label>
+                                                              <label for="name" class="col-form-label text-burdeos"><b>Nombre:</b></label>
                                                               <input class="form-control" type="text" name="name" value="{{ $user->name }}" autofocus/>
                                                           </div>
                                                           <div class="form-group">
-                                                              <label for="email" class="col-form-label text-burdeos">E-Mail:</label>
+                                                              <label for="email" class="col-form-label text-burdeos"><b>E-Mail:</b></label>
                                                               <input class="form-control" type="text" name="email" value="{{ $user->email }}">
                                                           </div>
                                                       </div>
                                                       <div class="modal-footer">
                                                           <button type="button" class="btn btn-outline-burdeos" data-dismiss="modal">Cerrar</button>
-                                                          <button type="submit" class="btn btn-burdeos">Modificar</button>
+                                                          <button type="submit" class="btn bg-blue t-white">Modificar</button>
                                                       </div>
                                                   </form>
                                               </div>
@@ -127,12 +127,12 @@
                                                       <div class="modal-body text-left">
                                                           <div class="row">
                                                               <div class="col-md-12">
-                                                                  <p class="text-burdeos">{{ $user->name}}</p>
+                                                                  <p class="text-burdeos"><b>Nombre:</b><BR>{{ $user->name}}</p>
                                                               </div>
                                                           </div>
                                                           <div class="row">
                                                               <div class="col-md-12">
-                                                                  <p class="text-burdeos">E-Mail: {{ $user->email}}</p>
+                                                                  <p class="text-burdeos"><b>E-Mail:</b><BR>{{ $user->email}}</p>
                                                               </div>
                                                           </div>
                                                       </div>

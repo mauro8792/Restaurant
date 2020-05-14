@@ -28,7 +28,6 @@
                             <p class="text-center"><a href="#modalRecipeAdd" class="btn btn-burdeos btn-round" data-toggle="modal"  data-target="#modalRecipeAdd">Nueva Receta</a></p>                        
                             <div class="row table-responsive-sm">
                                 <div class="col-md-12">
-                                @if(count($recipes)>0)
                                     <table id="recipesTable" class="table table-striped text-white">
                                     <thead>
                                         <tr>
@@ -43,41 +42,46 @@
                                         <tr>
                                             <td class="text-left" data-toggle="tooltip" title="{{ $recipe->name }}">{{ Str::limit($recipe->name,35,'...') }}</td>                                            
                                             <td class="text-left" data-toggle="tooltip" title="{{ $recipe->description }}">{{ Str::limit($recipe->description,35,'...') }}</td>                                                                           
-                                            <td class="text-right">@if(len($recipe->video>0))Ver Video@endif</td>
+                                            <td class="text-right">@if($recipe->video>0)"Ver Video"@endif</td>
                                             <td class="text-right">
                                                 <a href="#modalRecipeDetail{{$recipe->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $recipe->name }}" data-toggle="modal"  data-target="#modalRecipeDetail{{$recipe->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
                                                 <a href="#modalRecipeEdit{{$recipe->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $recipe->name }}" data-toggle="modal"  data-target="#modalRecipeEdit{{$recipe->id}}"><i class="fa fa-edit t-blue"></i></a>
                                                 <a href="#modalRecipeDelete{{$recipe->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar {{ $recipe->name }}" data-toggle="modal"  data-target="#modalRecipeDelete{{$recipe->id}}"><i class="fa fa-times t-red"></i></a>
+                                                <a href="{{ url('/admin/recipes/'.$recipe->id.'/images') }}" class="btn btn-outline-dark btn-sm" type="submit" title="Ver imágenes {{ $recipe->name }}" "><i class="fa fa-camera text-burdeos"></i></a>                                                
                                             </td>                                            
                                         </tr>  
                                           <!-- Modal Recipe Detail -->
                                           <div class="modal fade t-black text-center" id="modalRecipeDetail{{$recipe->id}}" tabindex="-1" role="dialog" aria-labelledby="modalRecipeDetail{{$recipe->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header text-center bg-burdeos">
-                                                          <h5 class="modal-title text-white" id="modalRecipeDetail{{$recipe->id}}Title">Detalle de {{ $recipe->name }}</h5>
+                                                      <div class="modal-header text-center bg-yellow">
+                                                          <h5 class="modal-title t-black" id="modalRecipeDetail{{$recipe->id}}Title">Detalle de {{ $recipe->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
                                                       <div class="modal-body text-left">                                                          
-                                                            <div class="row">
+                                                             <div class="row">
                                                                 <div class="col-md-12 text-burdeos">
-                                                                    <p class="text-burdeos">Recipeo: {{ $recipe->name}}</p>
+                                                                    <p class="text-burdeos"><b>Receta:</b><BR>{{ $recipe->name}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <?php $str = str_replace("\n", ' - ', $recipe->ingredients);?>
+                                                                    <pre class="text-burdeos"><b>Ingredientes:</b><BR>{{ $str }}</pre>
+                                                                </div>                                                            
+                                                                <div class="col-md-6">                                                             
+                                                                    <pre class="text-burdeos"><b>Descripción:</b><BR>{{ $recipe->description}}</pre>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Descripción: {{ $recipe->description}}</p>
+                                                                    <p class="text-burdeos"><b>Video:</b><BR>{{ $recipe->video}}</p>
                                                                 </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <p class="text-burdeos">Precio: <?php echo ($recipe->price > 0)?"$":"";?>{{ $recipe->price}}</p>
-                                                                </div>
-                                                            </div>                                                            
+                                                            </div>                                                          
                                                       </div>
 
                                                       <div class="modal-footer">
-                                                          <button type="button" class="btn btn-burdeos" data-dismiss="modal">Cerrar</button>
+                                                          <button type="button" class="btn bg-yellow t-black" data-dismiss="modal">Cerrar</button>
                                                       </div>
                                                   </div>
                                               </div>
@@ -88,33 +92,50 @@
                                           <div class="modal fade t-black" id="modalRecipeEdit{{$recipe->id}}" tabindex="-1" role="dialog" aria-labelledby="modalRecipeEdit{{$recipe->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header bg-burdeos">
+                                                      <div class="modal-header bg-blue">
                                                           <h5 class="modal-title text-white" id="modalRecipeEdit{{$recipe->id}}Title">Modificar Datos de  {{ $recipe->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
                                                       <form method="post" action="{{ url('/admin/recipes/'.$recipe->id.'/edit') }}" enctype="multipart/form-data">
                                                       <div class="modal-body text-left">
                                                           {{ csrf_field() }}
-                                                          <input type="hidden" name="category_id" value="{{ $category->id }}">
 
-                                                          <div class="form-group">
-                                                              <label for="name" class="col-form-label text-burdeos">Nombre:</label>
-                                                              <input class="form-control" type="text" name="name" value="{{ $recipe->name }}" autofocus/>
-                                                          </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="name" class="col-form-label text-burdeos"><b>Receta:</b></label>
+                                                                    <input class="form-control" placeholder="Nombre" type="text" name="name" value="{{ $recipe->name }}" autofocus/>
+                                                                </div>
+                                                            </div>
 
-                                                          <div class="form-group">
-                                                              <label for="email" class="col-form-label text-burdeos">Descipción</label>
-                                                              <textarea class="form-control" placeholder="Descripción" rows="5" name="description">{{ $recipe->description }}</textarea>
-                                                          </div>      
+                                                            <div class="row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="ingredients" class="col-form-label text-burdeos"><b>Ingredientes:</b></label>
+                                                                    <textarea class="form-control" placeholder="Lista de Ingredientes" rows="5" name="ingredients"> {{ $recipe->ingredients }} </textarea>
+                                                                </div> 
 
-                                                          <div class="form-group">
-                                                              <label for="name" class="col-form-label text-burdeos">Precio:</label>
-                                                              <input class="form-control" type="number" name="price" value="{{ $recipe->price }}"/>
-                                                          </div>                                                                                                              
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="description" class="col-form-label text-burdeos"><b>Descripción</b></label>
+                                                                    <textarea class="form-control" placeholder="Descripción paso a paso" rows="5" name="description"> {{ $recipe->description }}" </textarea>
+                                                                </div>                         
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="video" class="col-form-label text-burdeos"><b>Link de Video:</b></label>
+                                                                    <input class="form-control" placeholder="Link de Video" type="text" name="video" value="{{ $recipe->video }}" >
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="image" class="col-form-label text-burdeos"><b>Imágenes:</b></label>
+                                                                    <input class="form-control" placeholder="Imágenes" type="file" name="image[]" multiple>
+                                                                </div>   
+                                                            </div>                                                                                                       
                                                       </div>
                                                       <div class="modal-footer">
                                                           <button type="button" class="btn btn-outline-burdeos" data-dismiss="modal">Cerrar</button>
-                                                          <button type="submit" class="btn btn-burdeos">Modificar</button>
+                                                          <button type="submit" class="btn bg-blue t-white">Modificar</button>
                                                       </div>
                                                   </form>
                                               </div>
@@ -133,17 +154,20 @@
                                                       <div class="modal-body text-left">
                                                             <div class="row">
                                                                 <div class="col-md-12 text-burdeos">
-                                                                    <p class="text-burdeos">Recipeo: {{ $recipe->name}}</p>
+                                                                    <p class="text-burdeos"><b>Receta:</b><BR>{{ $recipe->name}}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <pre class="text-burdeos"><b>Ingredientes:</b><BR>{{ $recipe->ingredients}}</pre>
+                                                                </div>                                                            
+                                                                <div class="col-md-6">                                                             
+                                                                    <pre class="text-burdeos"><b>Descripción:</b><BR>{{ $recipe->description}}</pre>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Descripción: {{ $recipe->description}}</p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-md-12">
-                                                                    <p class="text-burdeos">Precio: <?php echo ($recipe->price > 0)?"$":"";?>{{ $recipe->price}}</p>
+                                                                    <p class="text-burdeos"><b>Video:</b><BR>{{ $recipe->video}}</p>
                                                                 </div>
                                                             </div> 
                                                       </div>
@@ -165,10 +189,6 @@
                                     </tbody>
                                 </table>
 
-                        
-                                @else
-                                    <h4>No hay recipeos cargados</h4>
-                                @endif
                                 </div>
                         </div>
                     </div>
@@ -183,30 +203,49 @@
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-burdeos">
-                    <h5 class="modal-title text-white" id="modalRecipeAddTitle">Agregar Recipeo</h5>
+                    <h5 class="modal-title text-white" id="modalRecipeAddTitle">Agregar Receta a {{$category->name}}</h5>
                     <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <form method="post" action="{{ url('/admin/recipes') }}" enctype="multipart/form-data">
                     <div class="modal-body text-left">
                         {{ csrf_field() }}
-                        <div class="form-group">
-                            <label for="name" class="col-form-label text-burdeos">Nombre:</label>
-                            <input class="form-control" type="text" name="name" autofocus/>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="name" class="col-form-label text-burdeos">Receta:</label>
+                                <input class="form-control" placeholder="Nombre" type="text" name="name" autofocus/>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="email" class="col-form-label text-burdeos">Descipción</label>
-                            <textarea class="form-control" placeholder="Descripción" rows="5" name="description"></textarea>
-                        </div>      
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="ingredients" class="col-form-label text-burdeos">Ingredientes</label>
+                                <textarea class="form-control" placeholder="Lista de Ingredientes" rows="5" name="ingredients"></textarea>
+                            </div> 
 
-                        <div class="form-group">
-                            <label for="name" class="col-form-label text-burdeos">Precio:</label>
-                            <input class="form-control" type="number" name="price">
-                        </div>   
+                            <div class="form-group col-md-6">
+                                <label for="description" class="col-form-label text-burdeos">Descripción</label>
+                                <textarea class="form-control" placeholder="Descripción paso a paso" rows="5" name="description"></textarea>
+                            </div>                         
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="video" class="col-form-label text-burdeos">Link de Video:</label>
+                                <input class="form-control" placeholder="Link de Video" type="text" name="video">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="image" class="col-form-label text-burdeos">Imágenes:</label>
+                                <input class="form-control" placeholder="Imágenes" type="file" name="image[]" multiple>
+                            </div>   
+                        </div>                            
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-burdeos" data-dismiss="modal">Cerrar</button>
-                        <input type="hidden" name="category_id" value="{{$category->id}}">                        
+                        <input type="hidden" name="recipecategory_id" value="{{$category->id}}">                        
                         <button type="submit" class="btn btn-burdeos">Agregar</button>
                     </div>
                 </form>
