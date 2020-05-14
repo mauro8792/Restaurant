@@ -71,7 +71,7 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Precio: <?php echo ($product->price > 0)?"$":"";?>{{ $product->price}}</p>
+                                                                    <p class="text-burdeos">Precio: <?php echo ($product->price > 0)?"€":"";?>{{ $product->price}}</p>
                                                                 </div>
                                                             </div>                                                            
                                                       </div>
@@ -200,7 +200,7 @@
 
                         <div class="form-group">
                             <label for="name" class="col-form-label text-burdeos">Precio:</label>
-                            <input class="form-control" type="number" name="price">
+                            <input class="form-control" type="number" name="price" step="0.01" min="0">
                         </div>   
                     </div>
                     <div class="modal-footer">
