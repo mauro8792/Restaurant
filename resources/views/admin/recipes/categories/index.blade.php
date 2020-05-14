@@ -52,6 +52,7 @@
                                         </td>
                                     </tr>
 
+
                                           <!-- Modal Category Detail -->
                                           <div class="modal fade t-black text-center" id="modalCategoryDetail{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="modalCategoryDetail{{$category->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
@@ -173,6 +174,7 @@
                             
                             
                             </div>
+
                         </div>
                     </div>
                 </div>

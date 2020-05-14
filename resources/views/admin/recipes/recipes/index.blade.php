@@ -164,6 +164,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+
                         
                                 @else
                                     <h4>No hay recipeos cargados</h4>
