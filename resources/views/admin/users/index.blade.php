@@ -50,8 +50,8 @@
                                               <td class="text-center">
                                                       <input type="hidden" name="id" value="{{ $user->id }}">
                                                       <a href="#modalUserDetail{{$user->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $user->name }}" data-toggle="modal"  data-target="#modalUserDetail{{$user->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
-                                                      <a href="#modalUserEdit{{$user->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar Usuario {{ $user->name }}" data-toggle="modal"  data-target="#modalUserEdit{{$user->id}}"><i class="fa fa-edit t-blue"></i></a>
-                                                      <a href="#modalUserDelete{{$user->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar Usuario {{ $user->name }}" data-toggle="modal"  data-target="#modalUserDelete{{$user->id}}"><i class="fa fa-times t-red"></i></a>
+                                                      <a href="#modalUserEdit{{$user->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $user->name }}" data-toggle="modal"  data-target="#modalUserEdit{{$user->id}}"><i class="fa fa-edit t-blue"></i></a>
+                                                      <a href="#modalUserDelete{{$user->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar {{ $user->name }}" data-toggle="modal"  data-target="#modalUserDelete{{$user->id}}"><i class="fa fa-times t-red"></i></a>
                                               </td>
                                           </tr>
 
@@ -217,12 +217,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>    
 
     <script>
-        $(document).ready(function() {
-            // show the alert
-            setTimeout(function() {
-                $(".alert").alert('close');
-            }, 3000);
-        });
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 2000);
 
 
         $('#modalUserAdd').on('shown.bs.modal', function (e) {

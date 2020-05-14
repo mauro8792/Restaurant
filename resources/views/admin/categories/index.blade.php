@@ -40,7 +40,8 @@
                                       <table id="categoriesTable" class="table table-striped text-white">
                                       <thead>
                                           <tr>
-                                            <th class="text-center" width="60%">Nombre</th>
+                                            <th class="text-center" width="30%">Nombre</th>
+                                            <th class="text-center" width="30%">Descripcion</th>                                            
                                             <th class="text-center" width="10%">Estado</th>
                                             <th class="text-center" width="10%">Imagen</th>
                                             <th class="text-right" width="20%">Opciones</th>
@@ -49,14 +50,15 @@
                                       <tbody>
                                           @foreach ($categories as $category)
                                           <tr>
-                                            <td class="text-left">{{ $category->name }}</td>
+                                            <td class="text-left" data-toggle="tooltip" title="{{ $category->name }}">{{ Str::limit($category->name,35,'...') }}</td>
+                                            <td class="text-left" data-toggle="tooltip" title="{{ $category->description }}">{{ Str::limit($category->description,35,'...') }}</td>                                            
                                             <?php $show = ($category->show)?"fa fa-eye":"fa fa-eye-slash";?>
                                             <td class="text-center"><i class="{{ $show }} text-burdeos"></i></td>                                                                                       
                                             <td class="text-center"><img src="{{ $category->featured_image_url }}" height="50"></td>
                                             <td class="text-right">
                                                     <a href="#modalCategoryDetail{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDetail{{$category->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
-                                                    <a href="#modalCategoryEdit{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar Usuario {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryEdit{{$category->id}}"><i class="fa fa-edit t-blue"></i></a>
-                                                    <a href="#modalCategoryDelete{{$category->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar Usuario {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDelete{{$category->id}}"><i class="fa fa-times t-red"></i></a>
+                                                    <a href="#modalCategoryEdit{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryEdit{{$category->id}}"><i class="fa fa-edit t-blue"></i></a>
+                                                    <a href="#modalCategoryDelete{{$category->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDelete{{$category->id}}"><i class="fa fa-times t-red"></i></a>
                                                     <a href="{{ url('/admin/categories/'.$category->id.'/products') }}" class="btn btn-outline-dark btn-sm" type="submit" title="Listado de Productos de {{ $category->name }}"><i class="fa fa-beer text-burdeos"></i></a>
                                             </td>
                                           </tr>
@@ -241,12 +243,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>   
 
     <script>
-        $(document).ready(function() {
-            // show the alert
-            setTimeout(function() {
-                $(".alert").alert('close');
-            }, 3000);
-        });
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 2000);
 
 
         $('#modalCategoryAdd').on('shown.bs.modal', function (e) {
@@ -280,7 +281,8 @@
                 "bJQueryUI":		false,
                 "aoColumns":[
                     {"bSortable": true},
-                    {"bSortable": true},
+                    {"bSortable": false},
+                    {"bSortable": true},                    
                     {"bSortable": false, 'searchable': false},
                     {"bSortable": false, 'searchable': false}
                 ],
