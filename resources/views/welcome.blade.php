@@ -235,7 +235,10 @@
                 {{-- <iframe width="420" height="345" src="https://www.youtube.com/embed/tgbNymZ7vqY">
                 </iframe> --}}
                 
-                <iframe width="420" height="345" src="{{!! $recipe->video !!}}">  </iframe>
+                
+
+                  {{!! $recipe->video_html !!}}
+                
                 <div class="media-body p-md-5 p-4">
                   <h5 class="mt-0 h4">{{$recipe->name}}</h5>
                   <p class="mb-4">{{$recipe->ingredients}}</p>
