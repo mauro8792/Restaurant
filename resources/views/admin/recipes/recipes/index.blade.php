@@ -32,8 +32,8 @@
                                     <thead>
                                         <tr>
                                             <th class="text-center" width="30%">Nombre</th>
-                                            <th class="text-center" width="30%">Descripción</th>
-                                            <th class="text-center" width="20%">Video</th>
+                                            <th class="text-center" width="40%">Descripción</th>
+                                            <th class="text-center" width="10%">Video</th>
                                             <th class="text-center" width="20%">Opciones</th>
                                         </tr>
                                     </thead>
@@ -42,7 +42,9 @@
                                         <tr>
                                             <td class="text-left" data-toggle="tooltip" title="{{ $recipe->name }}">{{ Str::limit($recipe->name,35,'...') }}</td>                                            
                                             <td class="text-left" data-toggle="tooltip" title="{{ $recipe->description }}">{{ Str::limit($recipe->description,35,'...') }}</td>                                                                           
-                                            <td class="text-right">@if(strlen($recipe->video)>0)"Ver Video"@endif</td>
+
+                                            <td class="text-right">@if($recipe->video >" ") Ver video @endif</td>
+
                                             <td class="text-right">
                                                 <a href="#modalRecipeDetail{{$recipe->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $recipe->name }}" data-toggle="modal"  data-target="#modalRecipeDetail{{$recipe->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
                                                 <a href="#modalRecipeEdit{{$recipe->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $recipe->name }}" data-toggle="modal"  data-target="#modalRecipeEdit{{$recipe->id}}"><i class="fa fa-edit t-blue"></i></a>
@@ -300,7 +302,7 @@
                 "aoColumns":[
                     {"bSortable": true},
                     {"bSortable": false},
-                    {"bSortable": true, 'searchable': false},
+                    {"bSortable": false, 'searchable': false},
                     {"bSortable": false, 'searchable': false}
                 ],
 
