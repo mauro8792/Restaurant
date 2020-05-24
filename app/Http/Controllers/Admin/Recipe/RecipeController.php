@@ -49,6 +49,17 @@ class RecipeController extends Controller
         }
         return redirect('/admin/recipe-book/'.$request->recipecategory_id.'/recipes');
     }
+    public function update(Request $request, $id){
+        //dd($request->recipe_id);
+
+        $recipe= Recipe::find($request->recipe_id);
+        $recipe->name = $request->name;
+        $recipe->ingredients = $request->ingredients;
+        $recipe->description = $request->description;
+        $recipe->video = $request->video;
+        $recipe->save();
+        return redirect('/admin/recipe-book/'.$request->recipecategory_id.'/recipes');
+    }
     public function indeximage($id){
         
         $recipe = Recipe::find($id);

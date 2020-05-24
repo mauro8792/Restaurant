@@ -126,7 +126,7 @@
                                                             <div class="row">
                                                                 <div class="form-group col-md-6">
                                                                     <label for="price" class="col-form-label text-burdeos"><b>Precio:</b></label>
-                                                                    <input class="form-control" type="number" name="price" id="price" value="{{ $catering->price }}">
+                                                                    <input class="form-control" type="number" name="price" id="price" value="{{ $catering->price }}" step="0.01" min="0">
                                                                 </div>
                                                                 <div class="form-group col-md-6">
                                                                     <label for="image" class="col-form-label text-burdeos"><b>Imágen:</b></label>
@@ -241,7 +241,7 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="price" class="col-form-label text-burdeos">Precio:</label>
-                                <input class="form-control" type="number" name="price" id="price">
+                                <input class="form-control" type="number" name="price" id="price" step="0.01" min="0">
                             </div>
 
                             <div class="form-group col-md-6">
