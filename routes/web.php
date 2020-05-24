@@ -21,9 +21,7 @@ Route::get('logout', function ()
     return Redirect::to('/');
 })->name('logout');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController@index');
 
 Route::get('/home', function () {
     return view('welcome');
@@ -64,8 +62,8 @@ Route::prefix('admin')->namespace('Admin\Catering')->middleware(['auth'])
         Route::get('caterings', 'CateringController@index'); // listado
         Route::get('/caterings/create', 'CateringController@create'); // formulario
         Route::post('/caterings', 'CateringController@store'); // registrar
-        Route::get('/caterings/{category}/edit', 'CateringController@edit'); // formulario edición
-        Route::post('/caterings/{category}/edit', 'CateringController@update'); // actualizar
+        Route::get('/caterings/{id}/edit', 'CateringController@edit'); // formulario edición
+        Route::post('/caterings/{id}/edit', 'CateringController@update'); // actualizar
         Route::delete('/caterings', 'CateringController@destroy'); // form eliminar               
 });
 
