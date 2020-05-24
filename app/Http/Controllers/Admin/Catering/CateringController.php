@@ -48,6 +48,7 @@ class CateringController extends Controller
     }
     public function update(Request $request)
     {
+        //dd($request->id);
         $catering = Catering::find($request->id);
         $catering->name = $request->input('name');
         $catering->description = $request->input('description');
