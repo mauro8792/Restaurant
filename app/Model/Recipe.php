@@ -25,7 +25,7 @@ class Recipe extends Model
         if (!$embed)
             return '';
 
-        $embed->setAttribute(['width' => 400]);
+        $embed->setAttribute(['width' => 348]);
         return $embed->getHtml();
     }
 }

@@ -254,8 +254,45 @@
       </div>
     </section>
     <!-- END section -->
+    <section class="ftco-section" id="section-menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center mb-5 ftco-animate">
+            <h2 class="display-4">Nuestro Menú del Día</h2>
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                <p class="lead">Solo de Lunes a Viernes</p>
+              </div>
+            </div>
+          </div>
 
-    <section class="ftco-section" id="section-gallery">
+          <div class="col-md-12 ">
+            <div class="item">
+              <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <img src="{{ $menu->featured_image_url }}" alt="Free Template by Free-Template.co" class="img-fluid">
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <h5 class="mt-0 h4 text-primary">{{$menu->products[0]->name}}</h5>
+                    <h3> €{{$menu->products[0]->price}}</h3>
+                  <p class="mb-4">{{$menu->products[0]->description}}</p>
+                </div>
+                 
+
+                </div>
+              </div>
+            </div>
+            
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
+
+    <section class="ftco-section bg-light" id="section-gallery">
       <div class="container">
         <div class="row ftco-custom-gutters">
 
@@ -305,7 +342,7 @@
     </section>
     <!-- END section -->
 
-    <section class="ftco-section bg-light" id="section-contact">
+    <section class="ftco-section " id="section-contact">
       <div class="container">
         <div class="row">
 
