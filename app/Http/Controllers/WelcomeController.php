@@ -45,10 +45,13 @@ class WelcomeController extends Controller
         }
         //seccion recetas
         $recipes = Recipe::all()->random(3);
+
+        //menu del dia
+        $menu= Category::where('name', 'menu del día')->first();
         //dd($recipes);
         return view('welcome')
             ->with(compact('caterings','breakfasts1','breakfasts2',
                             'meets1', 'meets2',
-                            'iberico2', 'iberico1', 'recipes' ));
+                            'iberico2', 'iberico1', 'recipes', 'menu' ));
     }
 }
