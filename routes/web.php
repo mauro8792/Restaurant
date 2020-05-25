@@ -29,6 +29,7 @@ Route::get('/home', function () {
 
 Auth::routes();
 
+Route::get('/menú', 'MenuController@index');
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/users', 'UserController@index'); // listado
