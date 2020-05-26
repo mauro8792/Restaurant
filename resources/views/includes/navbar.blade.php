@@ -9,12 +9,23 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Inicio</a></li>
-            <li class="nav-item"><a href="#section-about" class="nav-link">Acerca de</a></li>
-            <li class="nav-item"><a href="#section-offer" class="nav-link">Catering</a></li>
-            <li class="nav-item"><a href="#section-menu" class="nav-link">Menu</a></li>
-            <li class="nav-item"><a href="#section-news" class="nav-link">Novedades</a></li>
-            <li class="nav-item"><a href="#section-gallery" class="nav-link">Fotos</a></li>
+            @if(Request::is('/') || Request::is('/home*'))
+            <li class="nav-item"><a href="#section-about" class="nav-link">Nosotros</a></li>
+            <li class="nav-item"><a href="#section-menu" class="nav-link">Menu</a></li>     
+            <li class="nav-item"><a href="{{ url('/menu') }}" class="nav-link">Menu</a></li>             
+            <li class="nav-item"><a href="#section-recipes" class="nav-link">Recetas</a></li>  
+            <li class="nav-item"><a href="#section-gallery" class="nav-link">Fotos</a></li>                             
+            <li class="nav-item"><a href="#section-catering" class="nav-link">Catering</a></li>
             <li class="nav-item"><a href="#section-contact" class="nav-link">Contacto</a></li>
+            @else
+            <li class="nav-item"><a href="/sabout" class="nav-link">Nosotros</a></li>
+            <li class="nav-item"><a href="/smenu" class="nav-link">Menu</a></li>     
+            <li class="nav-item"><a href="{{ url('/menu') }}" class="nav-link">Menu</a></li>             
+            <li class="nav-item"><a href="/srecipes" class="nav-link">Recetas</a></li>  
+            <li class="nav-item"><a href="/sgallery" class="nav-link">Fotos</a></li>                             
+            <li class="nav-item"><a href="/scatering" class="nav-link">Catering</a></li>
+            <li class="nav-item"><a href="/scontact" class="nav-link">Contacto</a></li>
+            @endif
             @if (Auth::check())
               <li class="nav-item dropdown ">
                 <a href="#" id="navbarDropdownMenuLink" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Administrador</a>

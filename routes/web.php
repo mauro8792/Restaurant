@@ -22,14 +22,33 @@ Route::get('logout', function ()
 })->name('logout');
 
 Route::get('/', 'WelcomeController@index');
-
-Route::get('/home', function () {
-    return view('welcome');
+Route::get('/home', 'WelcomeController@index')->name('home');
+Route::get('/sabout', function(){
+    return redirect()->to(route('home').'#section-about');
+});
+Route::get('/smenu', function(){
+    return redirect()->to(route('home').'#section-menu');
+});
+Route::get('/srecipes', function(){
+    return redirect()->to(route('home').'#section-recipes');
+});
+Route::get('/sgallery', function(){
+    return redirect()->to(route('home').'#section-gallery');
+});
+Route::get('/scatering', function(){
+    return redirect()->to(route('home').'#section-catering');
+});
+Route::get('/scontact', function(){
+    return redirect()->to(route('home').'#section-contact');
 });
 
 Auth::routes();
 
-Route::get('/menú', 'MenuController@index');
+Route::get('/menu', 'MenuController@index');
+Route::get('/menu1', 'MenuController@index1');
+Route::get('/menu2', 'MenuController@index2');
+Route::get('/recetas', 'RecipesController@index');
+
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/users', 'UserController@index'); // listado
