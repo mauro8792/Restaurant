@@ -131,4 +131,14 @@ class CategoryController extends Controller
         }
 
     }
+    public function changeState ($id){
+        $category = Category::find($id);
+        if ($category->show == 1) {
+            $category->show = 0;
+        }else{
+            $category->show = 1; 
+        }
+        $category->save();
+        return back();
+    }
 }

@@ -53,81 +53,55 @@
           </div>
 
           <div class="col-md-12 text-center">
-
             <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
-              <li class="nav-item ftco-animate">
-                <a class="nav-link active" id="pills-breakfast-tab" data-toggle="pill" href="#pills-breakfast" role="tab" aria-controls="pills-breakfast" aria-selected="true">Desayuno</a>
-              </li>
-              <li class="nav-item ftco-animate">
-                <a class="nav-link" id="pills-lunch-tab" data-toggle="pill" href="#pills-lunch" role="tab" aria-controls="pills-lunch" aria-selected="false">Carnes</a>
-              </li>
-              <li class="nav-item ftco-animate">
-                <a class="nav-link" id="pills-dinner-tab" data-toggle="pill" href="#pills-dinner" role="tab" aria-controls="pills-dinner" aria-selected="false">Ibéricos</a>
-              </li>
+              @foreach ($categories as $category)
+                <li class="nav-item ftco-animate">
+                  <a @if ($loop->first)
+                      class="nav-link active"
+                  @else
+                  class="nav-link"
+                  @endif   id="pills-{{$category->name}}-tab" data-toggle="pill" href="#pills-{{$category->name}}" role="tab" aria-controls="pills-{{$category->name}}" aria-selected="true">{{$category->name}}</a>
+                </li>                  
+              @endforeach
+              
             </ul>
-
-            <div class="tab-content text-left">
-
-            <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
-                <div class="row">
-                  <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
+              <div class="tab-content text-left">
+                <div class="tab-pane fade show active" id="pills-{{$categories[0]->name}}" role="tabpanel" aria-labelledby="pills-{{$categories[0]->name}}-tab">
+                  <div class="row">
+                    <div class="col-md-6 ftco-animate">
+                      @foreach ($categories[0]->products->random(3) as $product)
+                        <div class="media menu-item">
                           <img class="mr-3" src="images/menu_1.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
+                          <div class="media-body">
+                            <h5 class="mt-0">{{$product->name}}</h5>
+                            <p>{{$product->description}}</p>
+                            <h6 class="text-primary menu-price">${{$product->price}}</h6>
+                          </div>
+                        </div>
+                      @endforeach 
+                    </div>                      
+                  </div>
+                </div> 
+                @foreach ($categories->filter(function($kvalue,$key){return $key>0;}) as $category)
+                <div class="tab-pane fade " id="pills-{{$category->name}}" role="tabpanel" aria-labelledby="pills-{{$category->name}}-tab">
+                  <div class="row">
+                    <div class="col-md-6 ftco-animate">
+                      @foreach ($category->products->random(3) as $product)
+                        <div class="media menu-item">
+                          <img class="mr-3" src="images/menu_3.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
+                          <div class="media-body">
+                            <h5 class="mt-0">{{$product->name}}</h5>
+                            <p>{{$product->description}}</p>
+                            <h6 class="text-primary menu-price">${{$product->price}}</h6>
+                          </div>
+                        </div>                          
+                      @endforeach
+                    </div>
                   </div>
                 </div>
-                <div class="row text-center">               
-                    @foreach ($breakfasts as $breakfast)
-                      <div class="col-md-4 ftco-animate media menu-item">
-                        <div class="media-body">
-                          <h5 class="mt-0">{{$breakfast->name}}</h5>
-                          <p>{{$breakfast->description}}</p>
-                          <h6 class="text-primary menu-price">€{{$breakfast->price}}</h6>
-                        </div>
-                      </div>
-                    @endforeach
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-lunch" role="tabpanel" aria-labelledby="pills-lunch-tab">
-                <div class="row">
-                  <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
-                          <img class="mr-3" src="images/menu_1.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
-                  </div>
-                </div>
-                <div class="row text-center">
-                    @foreach ($meets as $meet)
-                      <div class="col-md-4 ftco-animate media menu-item">
-                        <div class="media-body">
-                        <h5 class="mt-0">{{$meet->name}}</h5>
-                          <p>{{$meet->description}}</p>
-                          <h6 class="text-primary menu-price">€{{$meet->price}}</h6>
-                        </div>
-                      </div>
-                    @endforeach
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-dinner" role="tabpanel" aria-labelledby="pills-dinner-tab">
-                <div class="row">
-                  <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
-                          <img class="mr-3" src="images/menu_1.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
-                  </div>
-                </div>              
-                <div class="row text-center">
-                    @foreach ($ibericos as $iberico)
-                      <div class="col-md-4 ftco-animate media menu-item">
-                        <div class="media-body">
-                          <h5 class="mt-0">{{$iberico->name}}</h5>
-                          <p>{{$iberico->description}}</p>
-                          <h6 class="text-primary menu-price">€{{$iberico->price}}</h6>
-                        </div>
-                      </div>                        
-                    @endforeach
-                </div>
-              </div>
-
-            </div>
+                @endforeach
+               </div>
           </div>
-        </div>
       </div>
     </section>
     <!-- END section -->

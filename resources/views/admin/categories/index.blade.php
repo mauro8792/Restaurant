@@ -53,7 +53,7 @@
                                             <td class="text-left" data-toggle="tooltip" title="{{ $category->name }}"><a href="{{ url('/admin/categories/'.$category->id.'/products') }}" class="t-white">{{ Str::limit($category->name,35,'...') }}</a></td>
                                             <td class="text-left" data-toggle="tooltip" title="{{ $category->description }}">{{ Str::limit($category->description,35,'...') }}</td>                                            
                                             <?php $show = ($category->show)?"fa fa-eye":"fa fa-eye-slash";?>
-                                            <td class="text-center"><i class="{{ $show }} text-burdeos"></i></td>                                                                                       
+                                            <td class="text-center"><a href="{{ url('/admin/categories/'.$category->id.'/estatus')}}"> <i class="{{ $show }} text-burdeos"></i></a></td>                                                                                       
                                             <td class="text-center"><img src="{{ $category->featured_image_url }}" height="50"></td>
                                             <td class="text-right">
                                                     <a href="#modalCategoryDetail{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDetail{{$category->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
