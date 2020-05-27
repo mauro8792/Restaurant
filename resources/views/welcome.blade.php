@@ -146,14 +146,15 @@
           </div>
           @foreach ($recipes as $recipe)
             <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="media d-block mb-4 text-center ftco-media ftco-animate">
-                  {!! $recipe->video_html !!}           
-                <div class="media-body">
-                  <h5 class="mt-0 h4">{{$recipe->name}}</h5>
-                  <p class="mb-4">{{$recipe->ingredients}}</p>
-                  <p class="mb-0"><a href="#" class="btn btn-burdeos btn-sm">Ver Receta</a></p>
+                <div class="media d-block mb-4 text-center ftco-media ftco-animate">
+                  <div class="p-md-1">                
+                    {!! $recipe->video_html !!}
+                  </div>
+                  <div class="media-body p-md-1">
+                    <h5 class="mt-0 h4">{{$recipe->name}}</h5>
+                    <p class="mt-4 mb-4"><a href="#" class="btn btn-burdeos btn-sm">Ver Receta</a></p>
+                  </div>
                 </div>
-              </div>
             </div>  
           @endforeach
           <div class="row justify-content-center media-body ftco-media ftco-animate">

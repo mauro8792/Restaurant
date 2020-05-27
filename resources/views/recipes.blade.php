@@ -35,11 +35,12 @@
           @foreach ($recipes as $recipe)
             <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="media d-block mb-4 text-center ftco-media ftco-animate">
+                <div class="p-md-1">                
                   {!! $recipe->video_html !!}
-                <div class="media-body p-md-5 p-4">
+                </div>
+                <div class="media-body p-md-1">
                   <h5 class="mt-0 h4">{{$recipe->name}}</h5>
-                  <p class="mb-4">{{$recipe->ingredients}}</p>
-                  <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Read More</a></p>
+                  <p class="mt-4 mb-4"><a href="#" class="btn btn-burdeos btn-sm">Ver Receta</a></p>
                 </div>
               </div>
             </div>  
