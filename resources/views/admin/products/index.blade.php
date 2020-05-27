@@ -25,10 +25,10 @@
                     <p>&nbsp;</p>
                     <div class="">
                         <div class="text-left">
-                            <p class="text-center"><a href="#modalProductAdd" class="btn btn-burdeos btn-round" data-toggle="modal"  data-target="#modalProductAdd">Nuevo producto</a></p>                        
+                            <p class="text-center"><a href="#modalProductAdd" class="btn btn-burdeos btn-round" data-toggle="modal"  data-target="#modalProductAdd">Nuevo Producto</a></p>                        
                             <div class="row table-responsive-sm">
                                 <div class="col-md-12">
-                                @if(count($products)>0)
+
                                     <table id="productsTable" class="table table-striped text-white">
                                     <thead>
                                         <tr>
@@ -41,43 +41,43 @@
                                     <tbody>
                                         @foreach ($products as $product)
                                         <tr>
-                                            <td class="text-left">{{ $product->name }}</td>
-                                            <td class="text-left">{{ Str::limit($product->description,35,'...') }}</td>                                 
-                                            <td class="text-right">@if($product->price>0)$@endif {{ $product->price }}</td>
+                                            <td class="text-left" data-toggle="tooltip" title="{{ $product->name }}">{{ Str::limit($product->name,35,'...') }}</td>                                            
+                                            <td class="text-left" data-toggle="tooltip" title="{{ $product->description }}">{{ Str::limit($product->description,35,'...') }}</td>                                                                           
+                                            <td class="text-right">@if($product->price>0)€@endif {{ $product->price }}</td>
                                             <td class="text-right">
                                                 <a href="#modalProductDetail{{$product->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $product->name }}" data-toggle="modal"  data-target="#modalProductDetail{{$product->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
-                                                <a href="#modalProductEdit{{$product->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar Producto {{ $product->name }}" data-toggle="modal"  data-target="#modalProductEdit{{$product->id}}"><i class="fa fa-edit t-blue"></i></a>
-                                                <a href="#modalProductDelete{{$product->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar Producto {{ $product->name }}" data-toggle="modal"  data-target="#modalProductDelete{{$product->id}}"><i class="fa fa-times t-red"></i></a>
+                                                <a href="#modalProductEdit{{$product->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $product->name }}" data-toggle="modal"  data-target="#modalProductEdit{{$product->id}}"><i class="fa fa-edit t-blue"></i></a>
+                                                <a href="#modalProductDelete{{$product->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar {{ $product->name }}" data-toggle="modal"  data-target="#modalProductDelete{{$product->id}}"><i class="fa fa-times t-red"></i></a>
                                             </td>                                            
                                         </tr>  
                                           <!-- Modal Product Detail -->
                                           <div class="modal fade t-black text-center" id="modalProductDetail{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="modalProductDetail{{$product->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header text-center bg-burdeos">
-                                                          <h5 class="modal-title text-white" id="modalProductDetail{{$product->id}}Title">Detalle de {{ $product->name }}</h5>
+                                                      <div class="modal-header text-center bg-yellow">
+                                                          <h5 class="modal-title text-black" id="modalProductDetail{{$product->id}}Title">Detalle de {{ $product->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
                                                       <div class="modal-body text-left">                                                          
                                                             <div class="row">
                                                                 <div class="col-md-12 text-burdeos">
-                                                                    <p class="text-burdeos">Producto: {{ $product->name}}</p>
+                                                                    <p class="text-burdeos"><b>Producto:</b><BR>{{ $product->name}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Descripción: {{ $product->description}}</p>
+                                                                    <p class="text-burdeos"><b>Descripción:</b><BR>{{ $product->description}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Precio: <?php echo ($product->price > 0)?"$":"";?>{{ $product->price}}</p>
+                                                                    <p class="text-burdeos"><b>Precio:</b><BR><?php echo ($product->price > 0)?"€":"";?>{{ $product->price}}</p>
                                                                 </div>
                                                             </div>                                                            
                                                       </div>
 
                                                       <div class="modal-footer">
-                                                          <button type="button" class="btn btn-burdeos" data-dismiss="modal">Cerrar</button>
+                                                          <button type="button" class="btn bg-yellow t-black" data-dismiss="modal">Cerrar</button>
                                                       </div>
                                                   </div>
                                               </div>
@@ -88,7 +88,7 @@
                                           <div class="modal fade t-black" id="modalProductEdit{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="modalProductEdit{{$product->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header bg-burdeos">
+                                                      <div class="modal-header bg-blue">
                                                           <h5 class="modal-title text-white" id="modalProductEdit{{$product->id}}Title">Modificar Datos de  {{ $product->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
@@ -98,23 +98,23 @@
                                                           <input type="hidden" name="category_id" value="{{ $category->id }}">
 
                                                           <div class="form-group">
-                                                              <label for="name" class="col-form-label text-burdeos">Nombre:</label>
+                                                              <label for="name" class="col-form-label text-burdeos"><b>Nombre:</b></label>
                                                               <input class="form-control" type="text" name="name" value="{{ $product->name }}" autofocus/>
                                                           </div>
 
                                                           <div class="form-group">
-                                                              <label for="email" class="col-form-label text-burdeos">Descipción</label>
+                                                              <label for="description" class="col-form-label text-burdeos"><b>Descipción</b></label>
                                                               <textarea class="form-control" placeholder="Descripción" rows="5" name="description">{{ $product->description }}</textarea>
                                                           </div>      
 
                                                           <div class="form-group">
-                                                              <label for="name" class="col-form-label text-burdeos">Precio:</label>
-                                                              <input class="form-control" type="number" name="price" value="{{ $product->price }}"/>
+                                                              <label for="name" class="col-form-label text-burdeos"><b>Precio:</b></label>
+                                                              <input class="form-control" type="number" name="price" value="{{ $product->price }}" step="0.01" min="0"/>
                                                           </div>                                                                                                              
                                                       </div>
                                                       <div class="modal-footer">
                                                           <button type="button" class="btn btn-outline-burdeos" data-dismiss="modal">Cerrar</button>
-                                                          <button type="submit" class="btn btn-burdeos">Modificar</button>
+                                                          <button type="submit" class="btn bg-blue t-white">Modificar</button>
                                                       </div>
                                                   </form>
                                               </div>
@@ -133,17 +133,17 @@
                                                       <div class="modal-body text-left">
                                                             <div class="row">
                                                                 <div class="col-md-12 text-burdeos">
-                                                                    <p class="text-burdeos">Producto: {{ $product->name}}</p>
+                                                                    <p class="text-burdeos"><b>Producto:</b><BR>{{ $product->name}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Descripción: {{ $product->description}}</p>
+                                                                    <p class="text-burdeos"><b>Descripción:</b><BR>{{ $product->description}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Precio: <?php echo ($product->price > 0)?"$":"";?>{{ $product->price}}</p>
+                                                                    <p class="text-burdeos"><b>Precio:</b><BR><?php echo ($product->price > 0)?"$":"";?>{{ $product->price}}</p>
                                                                 </div>
                                                             </div> 
                                                       </div>
@@ -165,9 +165,6 @@
                                     </tbody>
                                 </table>
                         
-                                @else
-                                    <h4>No hay productos cargados</h4>
-                                @endif
                                 </div>
                         </div>
                     </div>
@@ -194,13 +191,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email" class="col-form-label text-burdeos">Descipción</label>
+                            <label for="description" class="col-form-label text-burdeos">Descipción</label>
                             <textarea class="form-control" placeholder="Descripción" rows="5" name="description"></textarea>
                         </div>      
 
                         <div class="form-group">
-                            <label for="name" class="col-form-label text-burdeos">Precio:</label>
-                            <input class="form-control" type="number" name="price">
+                            <label for="price" class="col-form-label text-burdeos">Precio:</label>
+                            <input class="form-control" type="number" name="price" step="0.01" min="0">
                         </div>   
                     </div>
                     <div class="modal-footer">
@@ -219,12 +216,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>   
 
     <script>
-        $(document).ready(function() {
-            // show the alert
-            setTimeout(function() {
-                $(".alert").alert('close');
-            }, 3000);
-        });
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 2000);
 
 
         $('#modalProductAdd').on('shown.bs.modal', function (e) {

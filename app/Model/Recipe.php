@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Model;
-
+use Cohensive\Embed\Facades\Embed;
 use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
@@ -17,5 +17,15 @@ class Recipe extends Model
     public function images()
     {
         return $this->hasMany(RecipeImage::class);
+    }
+    public function getVideoHtmlAttribute()
+    {
+        $embed = Embed::make($this->video)->parseUrl();
+
+        if (!$embed)
+            return '';
+
+        $embed->setAttribute(['width' => 348]);
+        return $embed->getHtml();
     }
 }

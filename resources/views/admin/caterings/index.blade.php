@@ -35,7 +35,6 @@
                               <p class="text-center"><a href="#modalCateringAdd" class="btn btn-burdeos btn-round" data-toggle="modal"  data-target="#modalCateringAdd">Nuevo Catering</a></p>
                               <div class="row table-responsive-sm">
                                   <div class="col-md-12">
-                                  @if(count($caterings)>0)
                                       <table id="cateringsTable" class="table table-striped text-white">
                                       <thead>
                                           <tr>
@@ -49,14 +48,14 @@
                                       <tbody>
                                           @foreach ($caterings as $catering)
                                           <tr>
-                                            <td class="text-left">{{ $catering->name }}</td>
-                                            <td class="text-left">{{ Str::limit($catering->description,45,'...') }}</td>                                                                                       
-                                            <td class="text-right">{{ $catering->price }}</td>                                             
+                                            <td class="text-left" data-toggle="tooltip" title="{{ $catering->name }}">{{ Str::limit($catering->name,35,'...') }}</td>                                            
+                                            <td class="text-left" data-toggle="tooltip" data-placement="top" title="{{ $catering->description }}">{{ Str::limit($catering->description,45,'...') }}</td>                                                                                       
+                                            <td class="text-right">@if($catering->price>0)€@endif{{ $catering->price }}</td>                                             
                                             <td class="text-center"><img src="{{ $catering->featured_image_url }}" height="50"></td>
                                             <td class="text-right">
                                                     <a href="#modalCateringDetail{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringDetail{{$catering->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
-                                                    <a href="#modalCateringEdit{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar Usuario {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringEdit{{$catering->id}}"><i class="fa fa-edit t-blue"></i></a>
-                                                    <a href="#modalCateringDelete{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar Usuario {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringDelete{{$catering->id}}"><i class="fa fa-times t-red"></i></a>
+                                                    <a href="#modalCateringEdit{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Editar {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringEdit{{$catering->id}}"><i class="fa fa-edit t-blue"></i></a>
+                                                    <a href="#modalCateringDelete{{$catering->id}}" class="btn btn-outline-dark btn-sm" type="submit" title="Eliminar {{ $catering->name }}" data-toggle="modal"  data-target="#modalCateringDelete{{$catering->id}}"><i class="fa fa-times t-red"></i></a>
                                             </td>
                                           </tr>
 
@@ -64,8 +63,8 @@
                                           <div class="modal fade t-black text-center" id="modalCateringDetail{{$catering->id}}" tabindex="-1" role="dialog" aria-labelledby="modalCateringDetail{{$catering->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header text-center bg-burdeos">
-                                                          <h5 class="modal-title text-white" id="modalCateringDetail{{$catering->id}}Title">Detalle de {{ $catering->name }}</h5>
+                                                      <div class="modal-header text-center bg-yellow">
+                                                          <h5 class="modal-title text-black" id="modalCateringDetail{{$catering->id}}Title">Detalle de {{ $catering->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
                                                       <div class="modal-body text-left">
@@ -76,24 +75,24 @@
                                                             </div>                                                             
                                                             <div class="row">
                                                                 <div class="col-md-12 text-burdeos">
-                                                                    <p class="text-burdeos">Catering: {{ $catering->name}}</p>
+                                                                    <p class="text-burdeos"><b>Catering:</b><BR>{{ $catering->name}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Descripción: {{ $catering->description}}</p>
+                                                                    <p class="text-burdeos"><b>Descripción:</b><BR>{{ $catering->description}}</p>
                                                                     <!-- <textarea name="desc" rows="5" readonly="readonly">{{ $catering->description}}</textarea> -->
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12 text-burdeos">
-                                                                    <p class="text-burdeos">Precio: <?php echo ($catering->price>0)?"$":"";?>{{ $catering->price}}</p>
+                                                                    <p class="text-burdeos"><b>Precio:</b><BR><?php echo ($catering->price>0)?"$":"";?>{{ $catering->price}}</p>
                                                                 </div>
                                                             </div>                                                            
                                                       </div>
 
                                                       <div class="modal-footer">
-                                                          <button type="button" class="btn btn-burdeos" data-dismiss="modal">Cerrar</button>
+                                                          <button type="button" class="btn bg-yellow t-black" data-dismiss="modal">Cerrar</button>
                                                       </div>
                                                   </div>
                                               </div>
@@ -104,7 +103,7 @@
                                           <div class="modal fade t-black" id="modalCateringEdit{{$catering->id}}" tabindex="-1" role="dialog" aria-labelledby="modalCateringEdit{{$catering->id}}Title" aria-hidden="true">
                                               <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                                   <div class="modal-content">
-                                                      <div class="modal-header bg-burdeos">
+                                                      <div class="modal-header bg-blue">
                                                           <h5 class="modal-title text-white" id="modalCateringEdit{{$catering->id}}Title">Modificar Datos de  {{ $catering->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
@@ -113,24 +112,24 @@
                                                           {{ csrf_field() }}
 
                                                           <div class="form-group">
-                                                              <label for="name" class="col-form-label text-burdeos">Nombre:</label>
+                                                              <label for="name" class="col-form-label text-burdeos"><b>Nombre:</b></label>
                                                               <input class="form-control" type="text" name="name" value="{{ $catering->name }}" autofocus/>
                                                           </div>
 
                                                             <div class="row">
                                                                 <div class="form-group col-md-12">
-                                                                    <label for="description" class="col-form-label text-burdeos">Descripción:</label>                                
+                                                                    <label for="description" class="col-form-label text-burdeos"><b>Descripción:</b></label>                                
                                                                     <textarea class="form-control" placeholder="Descripción" rows="5" name="description">{{ $catering->description }}</textarea>
                                                                 </div>
                                                             </div>  
 
                                                             <div class="row">
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="price" class="col-form-label text-burdeos">Precio:</label>
-                                                                    <input class="form-control" type="number" name="price" id="price" value="{{ $catering->price }}">
+                                                                    <label for="price" class="col-form-label text-burdeos"><b>Precio:</b></label>
+                                                                    <input class="form-control" type="number" name="price" id="price" value="{{ $catering->price }}" step="0.01" min="0">
                                                                 </div>
                                                                 <div class="form-group col-md-6">
-                                                                    <label for="image" class="col-form-label text-burdeos">Imágen: </label>
+                                                                    <label for="image" class="col-form-label text-burdeos"><b>Imágen:</b></label>
                                                                     <input class="form-control" type="file" name="image" value="{{ $catering->image }}">
                                                                         @if ($catering->image)
                                                                         <p class="font12">
@@ -144,7 +143,7 @@
                                                       </div>
                                                       <div class="modal-footer">
                                                           <button type="button" class="btn btn-outline-burdeos" data-dismiss="modal">Cerrar</button>
-                                                          <button type="submit" class="btn btn-burdeos">Modificar</button>
+                                                          <button type="submit" class="btn bg-blue t-white">Modificar</button>
                                                       </div>
                                                   </form>
                                               </div>
@@ -168,17 +167,17 @@
                                                             </div>                                                          
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">{{ $catering->name}}</p>
+                                                                    <p class="text-burdeos"><b>Nombre:</b><BR>{{ $catering->name}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos">Descripción: {{ $catering->description}}</p>
+                                                                    <p class="text-burdeos"><b>Descripción:</b><BR>{{ $catering->description}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="form-group col-md-12">
-                                                                    <label for="price" class="col-form-label text-burdeos">Precio: <?php echo ($catering->price>0)?"$":"";?>{{ $catering->price }}</label>
+                                                                    <label for="price" class="col-form-label text-burdeos"><b>Precio:</b><BR><?php echo ($catering->price>0)?"€":"";?>{{ $catering->price }}</label>
                                                                 </div>
                                                             </div>                                                            
                                                       </div>
@@ -200,9 +199,7 @@
                                       </tbody>
                                   </table>
 
-                                  @else
-                                      <h4 class="text-white">No hay Categorías cargadas</h4>
-                                  @endif
+
                                   </div>
                           </div>
                       </div>
@@ -244,7 +241,7 @@
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="price" class="col-form-label text-burdeos">Precio:</label>
-                                <input class="form-control" type="number" name="price" id="price">
+                                <input class="form-control" type="number" name="price" id="price" step="0.01" min="0">
                             </div>
 
                             <div class="form-group col-md-6">
@@ -269,12 +266,11 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.20/datatables.min.js"></script>   
 
     <script>
-        $(document).ready(function() {
-            // show the alert
-            setTimeout(function() {
-                $(".alert").alert('close');
-            }, 3000);
-        });
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove(); 
+            });
+        }, 2000);
 
 
         $('#modalCateringAdd').on('shown.bs.modal', function (e) {
@@ -308,7 +304,8 @@
                 "bJQueryUI":		false,
                 "aoColumns":[
                     {"bSortable": true},
-                    {"bSortable": true},
+                    {"bSortable": false},
+                    {"bSortable": true},                    
                     {"bSortable": false, 'searchable': false},
                     {"bSortable": false, 'searchable': false}
                 ],

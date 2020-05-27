@@ -21,15 +21,33 @@ Route::get('logout', function ()
     return Redirect::to('/');
 })->name('logout');
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'WelcomeController@index');
+Route::get('/home', 'WelcomeController@index')->name('home');
+Route::get('/sabout', function(){
+    return redirect()->to(route('home').'#section-about');
 });
-
-Route::get('/home', function () {
-    return view('welcome');
+Route::get('/smenu', function(){
+    return redirect()->to(route('home').'#section-menu');
+});
+Route::get('/srecipes', function(){
+    return redirect()->to(route('home').'#section-recipes');
+});
+Route::get('/sgallery', function(){
+    return redirect()->to(route('home').'#section-gallery');
+});
+Route::get('/scatering', function(){
+    return redirect()->to(route('home').'#section-catering');
+});
+Route::get('/scontact', function(){
+    return redirect()->to(route('home').'#section-contact');
 });
 
 Auth::routes();
+
+Route::get('/menu', 'MenuController@index');
+Route::get('/menu1', 'MenuController@index1');
+Route::get('/menu2', 'MenuController@index2');
+Route::get('/recetas', 'RecipesController@index');
 
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
@@ -64,8 +82,8 @@ Route::prefix('admin')->namespace('Admin\Catering')->middleware(['auth'])
         Route::get('caterings', 'CateringController@index'); // listado
         Route::get('/caterings/create', 'CateringController@create'); // formulario
         Route::post('/caterings', 'CateringController@store'); // registrar
-        Route::get('/caterings/{category}/edit', 'CateringController@edit'); // formulario edición
-        Route::post('/caterings/{category}/edit', 'CateringController@update'); // actualizar
+        Route::get('/caterings/{id}/edit', 'CateringController@edit'); // formulario edición
+        Route::post('/caterings/{id}/edit', 'CateringController@update'); // actualizar
         Route::delete('/caterings', 'CateringController@destroy'); // form eliminar               
 });
 
@@ -82,8 +100,8 @@ Route::prefix('admin/recipes')->namespace('Admin\Recipe')->middleware(['auth'])
 Route::prefix('admin/')->namespace('Admin\Recipe')->middleware(['auth'])
     ->group(function () {
         //rutas de recetas
-        Route::get('recipes', 'RecipeController@index'); // listado
-        Route::get('/recipes/create', 'RecipeController@create'); // formulario
+        Route::get('/recipe-book/{id}/recipes', 'RecipeController@index'); // listado
+        Route::get('/recipe-book/{id}/recipes/create', 'RecipeController@create'); // formulario
         Route::post('/recipes/agregar-imagen', 'RecipeController@addImage'); // formulario
         Route::delete('/recipes/eliminar-imagen', 'RecipeController@deleteImage'); // formulario
         Route::post('/recipes', 'RecipeController@store'); // registrar

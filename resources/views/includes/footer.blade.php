@@ -45,8 +45,8 @@
               <ul class="ftco-footer-social list-unstyled float-md-right float-lft">
                 <!-- <li class="ftco-animate mr-4"><img src="{{ asset('/images/LogoLaCarreta.jpg') }}"  height="100"></li>                 -->
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.facebook.com/RestauranteGrillLaCarreta/"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="https://www.instagram.com/restaurantegrilllacarreta/"><span class="icon-instagram"></span></a></li>
               </ul>
             </div>
           </div>
