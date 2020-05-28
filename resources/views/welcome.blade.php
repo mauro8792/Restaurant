@@ -53,18 +53,18 @@
           </div>
 
           <div class="col-md-12 text-center">
-            <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
-              @foreach ($categories as $category)
-                <li class="nav-item ftco-animate">
-                  <a @if ($loop->first)
-                      class="nav-link active"
-                  @else
-                  class="nav-link"
-                  @endif   id="pills-{{$category->name}}-tab" data-toggle="pill" href="#pills-{{$category->name}}" role="tab" aria-controls="pills-{{$category->name}}" aria-selected="true">{{$category->name}}</a>
-                </li>                  
-              @endforeach
-              
-            </ul>
+              <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
+                @foreach ($categories as $category)
+                  <li class="nav-item ftco-animate">
+                    <a @if ($loop->first)
+                        class="nav-link active"
+                    @else
+                    class="nav-link"
+                    @endif   id="pills-{{$category->name}}-tab" data-toggle="pill" href="#pills-{{$category->name}}" role="tab" aria-controls="pills-{{$category->name}}" aria-selected="true">{{$category->name}}</a>
+                  </li>                  
+                @endforeach
+                
+              </ul>
               <div class="tab-content text-left">
                 <div class="tab-pane fade show active" id="pills-{{$categories[0]->name}}" role="tabpanel" aria-labelledby="pills-{{$categories[0]->name}}-tab">
                   <div class="row">
@@ -103,6 +103,7 @@
                </div>
           </div>
       </div>
+      
     </section>
     <!-- END section -->
 
