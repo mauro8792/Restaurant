@@ -11,7 +11,7 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center ftco-vh-100">
           <div class="col-md-12">
-            <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>La Carreta Restaurante</h1>
+            <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Restaurante Barbacoa<BR>La Carreta</h1>
             <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left">Las mejores carnes del país</h2>    
             <p><a href="#section-about" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
           </div>
@@ -24,16 +24,16 @@
       <div class="container">
         <div class="row">
           <div class="col-md-5 ftco-animate mb-5">
-            <h4 class="ftco-sub-title">Our Story</h4>
-            <h2 class="ftco-primary-title display-4">Welcome</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <h4 class="ftco-sub-title">Queremos darle la</h4>
+            <h2 class="ftco-primary-title display-4">Bienvenida</h2>
+            <p>Aquí encontrará un ambiente muy familiar y unos platos para deleitar su paladar.</p>
 
-            <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-            <p><a href="#" class="btn btn-secondary btn-lg">Our Story</a></p>
+            <p class="mb-4">Disponemos de carnes de excelente calidad, cortes argentinos y nacionales para hacer a la barbacoa (huelen que alimentan) y una carta basada en comida mediterránea exquisita.</p>
+            <p><a href="#section-menu" class="btn btn-outline-burdeos btn-lg">Continuar</a></p>
           </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-6 ftco-animate img" data-animate-effect="fadeInRight">
-            <img src="images/about_img_1.jpg" alt="Free Template by Free-Template.co">
+          <div class="col-md-2"></div>
+          <div class="col-md-5 ftco-animate img " data-animate-effect="fadeInRight">
+            <img src="{{ asset('/images/LogoLaCarreta.jpg') }}" width="400">
           </div>
         </div>
       </div>
@@ -47,56 +47,46 @@
             <h2 class="display-4">Nuestro menú</h2>
             <div class="row justify-content-center">
               <div class="col-md-7">
-                <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="lead">Disfrute de nuestro exquisito menú</p>
               </div>
             </div>
           </div>
 
           <div class="col-md-12 text-center">
-              <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
-                @foreach ($categories as $category)
-                  <li class="nav-item ftco-animate">
-                    <a @if ($loop->first)
-                        class="nav-link active"
-                    @else
-                    class="nav-link"
-                    @endif   id="pills-{{$category->name}}-tab" data-toggle="pill" href="#pills-{{$category->name}}" role="tab" aria-controls="pills-{{$category->name}}" aria-selected="true">{{$category->name}}</a>
-                  </li>                  
-                @endforeach
-                
-              </ul>
+
+            <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
+              @foreach ($categories as $category)
+                <li class="nav-item ftco-animate">
+                  <?php $showActive=($loop->first)?"active":" ";?>
+                  <?php $showAriaSelected=($loop->first)?"true":"false";?>
+                  <a class="nav-link {{ $showActive }}" id="pills-{{$category->id}}-tab" data-toggle="pill" href="#pills-{{$category->id}}" role="tab" aria-controls="pills-{{$category->id}}" aria-selected="{{ $showAriaSelected }}">{{$category->name}}</a> 
+                </li>                  
+              @endforeach
+              
+            </ul>
+
               <div class="tab-content text-left">
-                <div class="tab-pane fade show active" id="pills-{{$categories[0]->name}}" role="tabpanel" aria-labelledby="pills-{{$categories[0]->name}}-tab">
+
+                @foreach ($categories as $category)       
+                <?php $showActive=($loop->first)?"show active":" ";?>                      
+                <div class="tab-pane fade {{ $showActive}}" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
                   <div class="row">
-                    <div class="col-md-6 ftco-animate">
-                      @foreach ($categories[0]->products->random(3) as $product)
-                        <div class="media menu-item">
-                          <img class="mr-3" src="images/menu_1.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
-                          <div class="media-body">
-                            <h5 class="mt-0">{{$product->name}}</h5>
-                            <p>{{$product->description}}</p>
-                            <h6 class="text-primary menu-price">${{$product->price}}</h6>
-                          </div>
-                        </div>
-                      @endforeach 
-                    </div>                      
-                  </div>
-                </div> 
-                @foreach ($categories->filter(function($kvalue,$key){return $key>0;}) as $category)
-                <div class="tab-pane fade " id="pills-{{$category->name}}" role="tabpanel" aria-labelledby="pills-{{$category->name}}-tab">
+                    <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
+                            <img class="mr-3" src="images/menu_1.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
+                    </div>
+                  </div>                      
                   <div class="row">
-                    <div class="col-md-6 ftco-animate">
                       @foreach ($category->products->random(3) as $product)
+                      <div class="col-md-4 ftco-animate">   
                         <div class="media menu-item">
-                          <img class="mr-3" src="images/menu_3.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
                           <div class="media-body">
                             <h5 class="mt-0">{{$product->name}}</h5>
                             <p>{{$product->description}}</p>
                             <h6 class="text-primary menu-price">${{$product->price}}</h6>
                           </div>
                         </div>                          
+                      </div>
                       @endforeach
-                    </div>
                   </div>
                 </div>
                 @endforeach
