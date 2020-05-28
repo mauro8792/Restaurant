@@ -13,7 +13,7 @@
         <div class="row align-items-center justify-content-center text-center ftco-vh-100">
           <div class="col-md-12">
             <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Nuestro Menú</h1>
-            <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left">Las mejores carnes del país</h2>    
+            <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left">Disfrute de nuestro exquisito menú</h2>    
             <p><a href="#section-menu" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
           </div>
         </div>
@@ -22,14 +22,14 @@
     </section>
     <!-- END section -->
    
-    <section class="ftco-section bg-light" id="section-menu">
+    <section class="ftco-section" id="section-menu">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center mb-5 mt-5 ftco-animate">
             <h2 class="display-4">Nuestro menú</h2>
             <div class="row justify-content-center">
-              <div class="col-md-7">
-                <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <div class="col-md-9">
+                <p class="lead">Disponemos de carnes de excelente calidad, cortes argentinos y nacionales para hacer a la barbacoa (huelen que alimentan) y una carta basada en comida mediterránea exquisita.</p>
               </div>
             </div>
           </div>
