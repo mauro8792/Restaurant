@@ -53,6 +53,7 @@
           </div>
 
           <div class="col-md-12 text-center">
+
             <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
               @foreach ($categories as $category)
                 <li class="nav-item ftco-animate">
@@ -63,6 +64,7 @@
               @endforeach
               
             </ul>
+
               <div class="tab-content text-left">
 
                 @foreach ($categories as $category)       
@@ -91,6 +93,7 @@
                </div>
           </div>
       </div>
+      
     </section>
     <!-- END section -->
 
