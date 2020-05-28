@@ -14,14 +14,11 @@ class WelcomeController extends Controller
         
         $caterings = Catering::all()->random(4);
         
-        $categories = Category::where('show','1')
-            ->get()->random(3);
-        //dd($categories);
-        $recipes = Recipe::all()->random(3);
+        $categories = Category::where('show','1')->get()->random(3);
 
         //menu del dia
         $menu= Category::where('name', 'menu del día')->first();
-        //return view('welcome')->with(compact('caterings','breakfasts','meets','ibericos', 'recipes', 'menu' ));
-        return view('welcome')->with(compact('caterings','categories', 'recipes', 'menu' ));
+
+        return view('welcome')->with(compact('caterings','categories', 'menu' ));
     }
 }
