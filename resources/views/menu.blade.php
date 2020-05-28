@@ -79,7 +79,7 @@
                     @foreach ($meets as $meet)
                       <div class="col-md-4 ftco-animate media menu-item">
                         <div class="media-body">
-                        <h5 class="mt-0">{{$meet->name}}</h5>
+                          <h5 class="mt-0">{{$meet->name}}</h5>
                           <p>{{$meet->description}}</p>
                           <h6 class="text-primary menu-price">€{{$meet->price}}</h6>
                         </div>
