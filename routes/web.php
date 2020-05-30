@@ -49,6 +49,7 @@ Route::get('/menu1', 'MenuController@index1');
 Route::get('/menu2', 'MenuController@index2');
 Route::get('/menu3', 'MenuController@index3');
 Route::get('/recetas', 'RecipesController@index');
+Route::get('/recetas/{id}', 'RecipesController@show');
 Route::get('/caterings', 'CateringsController@index');
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
