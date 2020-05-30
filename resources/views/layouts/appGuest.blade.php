@@ -32,6 +32,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    @yield('styles')
 </head>
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
     @include('includes.navbar')  
@@ -62,6 +63,6 @@
     <script src="{{ asset('js/google-map.js') }}"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
-
+    @yield('scripts')
 </html>
 

@@ -43,7 +43,7 @@
           @foreach ($caterings as $catering)
             <div class="col-lg-4 col-md-6 col-sm-6">
               <div class="media d-block mb-4 text-center ftco-media ftco-animate">
-                <img src="{{ $catering->featured_image_url }}" alt="Free Template by Free-Template.co" class="img-fluid">
+                <img src="{{ $catering->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
                 <div class="media-body p-md-1">
                     <h5 class="mt-0 h4">{{$catering->name}}</h5>
                     <p class="mb-1">{{$catering->description}}</p>

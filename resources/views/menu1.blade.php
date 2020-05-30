@@ -3,7 +3,7 @@
 @section('title', 'La Carreta')
 
 @section('styles')
-
+    <link rel="stylesheet" href="{{ asset('css/precios.css') }}">
 @stop
 
 @section('content')
@@ -57,13 +57,12 @@
                   </div>                      
                   <div class="row">
                       @foreach ($category->products as $product)
-                      <div class="col-md-4 ftco-animate">   
-                        <div class="media menu-item">
-                          <div class="media-body">
-                            <h5 class="mt-0">{{$product->name}}</h5>
-                            <p>{{$product->description}}</p>
-                            <h6 class="text-primary menu-price">€{{$product->price}}</h6>
-                          </div>
+                      <div class="col-md-6 ftco-animate">   
+                        <div class="row-col-2 media menu-item">
+                          <p>
+                            <span class='descripcion'>{{$product->name}}</span>
+                            <span class='precio'>{{$product->price}}</span>
+                          </p>
                         </div>                          
                       </div>
                       @endforeach
@@ -115,5 +114,5 @@
 @stop
 
 @section('scripts')
-
+  <script src="{{ asset ('js/prefixfree.min.js') }}"></script>
 @stop

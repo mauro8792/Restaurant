@@ -11,7 +11,9 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center ftco-vh-100">
           <div class="col-md-12">
-            <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Restaurante <BR>La Carreta</h1>
+
+            <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Restaurante La Carreta</h1>
+
             <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left">Las mejores carnes a la barbacoa</h2>    
             <p><a href="#section-about" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
           </div>
@@ -70,7 +72,7 @@
                 <div class="tab-pane fade {{ $showActive}}" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
                   <div class="row">
                     <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
-                        <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Free Template by Free-Template.co">
+                        <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Restaurante La Carreta">
                     </div>
                   </div>                      
                   <div class="row">
@@ -80,7 +82,7 @@
                           <div class="media-body">
                             <h5 class="mt-0">{{$product->name}}</h5>
                             <p>{{$product->description}}</p>
-                            <h6 class="text-primary menu-price">${{$product->price}}</h6>
+                            <h6 class="text-primary menu-price">€{{$product->price}}</h6>
                           </div>
                         </div>                          
                       </div>
@@ -114,7 +116,7 @@
               <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
                 <div class="row pt-5 pb-5">
                   <div class="col-md-6">
-                    <img src="{{ $menu->featured_image_url }}" alt="Free Template by Free-Template.co" class="img-fluid">
+                    <img src="{{ $menu->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
                   </div>
                   
                   <div class="col-md-6">
@@ -233,7 +235,7 @@
                   
                 <div class="item">
                   <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                    <img src="{{ $catering->featured_image_url }}" alt="Free Template by Free-Template.co" class="img-fluid">
+                    <img src="{{ $catering->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
                     <div class="media-body p-md-2">
                       <h5 class="mt-0 h4">{{$catering->name}}</h5>
                       <p class="mb-1">{{$catering->description}}</p>
