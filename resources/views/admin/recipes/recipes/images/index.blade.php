@@ -14,16 +14,13 @@
                 {{ csrf_field() }}
                 <input type="file" name="image" required>
                 <input type='hidden' name="recipe_id" value='{{$recipe->id}}'>
-                <button type="submit" class="btn btn-primary btn-round">Subir nueva imagen</button>&nbsp; <a href="{{ url('/admin/recipes/') }}" class="btn btn-warning btn-round">Volver al listado de recetas</a>
+                <button type="submit" class="btn btn-burdeos btn-round">Subir nueva imagen</button>&nbsp; <a href="{{ url('/admin/recipes/') }}" class="btn btn-outline-burdeos btn-round">Volver al listado de recetas</a>
             </form>
 
             <hr class="text-white">
 
             <div class="row d-flex justify-content-center">
             @foreach ($images as $image)
-            @php
-                // dd($image->featured_image_url );
-            @endphp
                 <div class="card text-center m-1">
                     <img src="{{ $image->featured_image_url }}" width="250" class="m-1">
                     <div class="card-body">

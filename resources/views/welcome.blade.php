@@ -11,8 +11,8 @@
       <div class="container">
         <div class="row align-items-center justify-content-center text-center ftco-vh-100">
           <div class="col-md-12">
-            <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>La Carreta Restaurante</h1>
-            <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left">Las mejores carnes del país</h2>    
+            <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Restaurante Barbacoa<BR>La Carreta</h1>
+            <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left">Las mejores carnes a la barbacoa</h2>    
             <p><a href="#section-about" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
           </div>
         </div>
@@ -24,16 +24,16 @@
       <div class="container">
         <div class="row">
           <div class="col-md-5 ftco-animate mb-5">
-            <h4 class="ftco-sub-title">Our Story</h4>
-            <h2 class="ftco-primary-title display-4">Welcome</h2>
-            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+            <h4 class="ftco-sub-title">Queremos darle la</h4>
+            <h2 class="ftco-primary-title display-4">Bienvenida</h2>
+            <p>Aquí encontrará un ambiente muy familiar y unos platos para deleitar su paladar.</p>
 
-            <p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-            <p><a href="#" class="btn btn-secondary btn-lg">Our Story</a></p>
+            <p class="mb-4">Disponemos de carnes de excelente calidad, cortes argentinos y nacionales para hacer a la barbacoa (huelen que alimentan) y una carta basada en comida mediterránea exquisita.</p>
+            <p><a href="#section-menu" class="btn btn-outline-burdeos btn-lg">Continuar</a></p>
           </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-6 ftco-animate img" data-animate-effect="fadeInRight">
-            <img src="images/about_img_1.jpg" alt="Free Template by Free-Template.co">
+          <div class="col-md-2"></div>
+          <div class="col-md-5 ftco-animate img " data-animate-effect="fadeInRight">
+            <img src="{{ asset('/images/LogoLaCarreta.jpg') }}" width="400">
           </div>
         </div>
       </div>
@@ -47,126 +47,57 @@
             <h2 class="display-4">Nuestro menú</h2>
             <div class="row justify-content-center">
               <div class="col-md-7">
-                <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="lead">Disfrute de nuestro exquisito menú</p>
               </div>
             </div>
           </div>
 
           <div class="col-md-12 text-center">
-
             <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
-              <li class="nav-item ftco-animate">
-                <a class="nav-link active" id="pills-breakfast-tab" data-toggle="pill" href="#pills-breakfast" role="tab" aria-controls="pills-breakfast" aria-selected="true">Desayuno</a>
-              </li>
-              <li class="nav-item ftco-animate">
-                <a class="nav-link" id="pills-lunch-tab" data-toggle="pill" href="#pills-lunch" role="tab" aria-controls="pills-lunch" aria-selected="false">Carnes</a>
-              </li>
-              <li class="nav-item ftco-animate">
-                <a class="nav-link" id="pills-dinner-tab" data-toggle="pill" href="#pills-dinner" role="tab" aria-controls="pills-dinner" aria-selected="false">Ibéricos</a>
-              </li>
+              @foreach ($categories as $category)
+                <li class="nav-item ftco-animate">
+                  <?php $showActive=($loop->first)?"active":" ";?>
+                  <?php $showAriaSelected=($loop->first)?"true":"false";?>
+                  <a class="nav-link {{ $showActive }}" id="pills-{{$category->id}}-tab" data-toggle="pill" href="#pills-{{$category->id}}" role="tab" aria-controls="pills-{{$category->id}}" aria-selected="{{ $showAriaSelected }}">{{$category->name}}</a> 
+                </li>                  
+              @endforeach
+              
             </ul>
+              <div class="tab-content text-left">
 
-            <div class="tab-content text-left">
-
-            <div class="tab-pane fade show active" id="pills-breakfast" role="tabpanel" aria-labelledby="pills-breakfast-tab">
-                <div class="row">
-                  <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
-                          <img class="mr-3" src="images/menu_1.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
-                  </div>
-                </div>
-                <div class="row text-center">               
-                    @foreach ($breakfasts as $breakfast)
-                      <div class="col-md-4 ftco-animate media menu-item">
-                        <div class="media-body">
-                          <h5 class="mt-0">{{$breakfast->name}}</h5>
-                          <p>{{$breakfast->description}}</p>
-                          <h6 class="text-primary menu-price">€{{$breakfast->price}}</h6>
-                        </div>
+                @foreach ($categories as $category)       
+                <?php $showActive=($loop->first)?"show active":" ";?>                      
+                <div class="tab-pane fade {{ $showActive}}" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
+                  <div class="row">
+                    <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
+                        <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Free Template by Free-Template.co">
+                    </div>
+                  </div>                      
+                  <div class="row">
+                      @foreach ($category->products->random(3) as $product)
+                      <div class="col-md-4 ftco-animate">   
+                        <div class="media menu-item">
+                          <div class="media-body">
+                            <h5 class="mt-0">{{$product->name}}</h5>
+                            <p>{{$product->description}}</p>
+                            <h6 class="text-primary menu-price">${{$product->price}}</h6>
+                          </div>
+                        </div>                          
                       </div>
-                    @endforeach
-                </div>
-              </div>
-
-              <div class="tab-pane fade" id="pills-lunch" role="tabpanel" aria-labelledby="pills-lunch-tab">
-                <div class="row">
-                  <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
-                          <img class="mr-3" src="images/menu_1.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
+                      @endforeach
                   </div>
                 </div>
-                <div class="row text-center">
-                    @foreach ($meets as $meet)
-                      <div class="col-md-4 ftco-animate media menu-item">
-                        <div class="media-body">
-                        <h5 class="mt-0">{{$meet->name}}</h5>
-                          <p>{{$meet->description}}</p>
-                          <h6 class="text-primary menu-price">€{{$meet->price}}</h6>
-                        </div>
-                      </div>
-                    @endforeach
-                </div>
+                @endforeach
+               </div>
+               <div class="col-md-12 d-flex justify-content-center ftco-animate">
+                <p class="lead"><a href="/menu" class="btn btn-outline-burdeos btn-lg">Vea Nuestro Menú Completo</a></p>
               </div>
-
-              <div class="tab-pane fade" id="pills-dinner" role="tabpanel" aria-labelledby="pills-dinner-tab">
-                <div class="row">
-                  <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
-                          <img class="mr-3" src="images/menu_1.jpg" class="img-fluid" alt="Free Template by Free-Template.co">
-                  </div>
-                </div>              
-                <div class="row text-center">
-                    @foreach ($ibericos as $iberico)
-                      <div class="col-md-4 ftco-animate media menu-item">
-                        <div class="media-body">
-                          <h5 class="mt-0">{{$iberico->name}}</h5>
-                          <p>{{$iberico->description}}</p>
-                          <h6 class="text-primary menu-price">€{{$iberico->price}}</h6>
-                        </div>
-                      </div>                        
-                    @endforeach
-                </div>
-              </div>
-
-            </div>
           </div>
-        </div>
       </div>
     </section>
     <!-- END section -->
-
-    <section class="ftco-section" id="section-recipes">
-      <div class="container">
-
-        <div class="row">
-          <div class="col-md-12 text-center mb-5 ftco-animate">
-            <h2 class="display-4">Nuestras Recetas </h2>
-            <div class="row justify-content-center">
-              <div class="col-md-7">
-                <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-              </div>
-            </div>
-          </div>
-          @foreach ($recipes as $recipe)
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="media d-block mb-4 text-center ftco-media ftco-animate">
-                  <div class="p-md-1">                
-                    {!! $recipe->video_html !!}
-                  </div>
-                  <div class="media-body p-md-1">
-                    <h5 class="mt-0 h4">{{$recipe->name}}</h5>
-                    <p class="mt-4 mb-4"><a href="#" class="btn btn-burdeos btn-sm">Ver Receta</a></p>
-                  </div>
-                </div>
-            </div>  
-          @endforeach
-          <div class="row justify-content-center media-body ftco-media ftco-animate">
-            <p class="mb-0"><a href="{{ url('/recetas') }}" class="btn btn-burdeos btn-lg">Ver Todas</a></p>
-        </div>             
-        </div>
-     
-      </div>
-    </section>
-    <!-- END section -->
-    
-    <section class="ftco-section bg-light" id="section-daymenu">
+  
+    <section class="ftco-section" id="section-daymenu">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center mb-5 ftco-animate">
@@ -195,14 +126,16 @@
                 </div>
               </div>
             </div>
-            
+            <div class="col-md-12 d-flex justify-content-center ftco-animate">
+                <p class="lead"><a href="/menu" class="btn btn-outline-burdeos btn-lg">Vea Nuestro Menú Completo</a></p>
+              </div>            
           </div>
         </div>
       </div>
     </section>
     <!-- END section -->
 
-    <section class="ftco-section" id="section-gallery">
+    <section class="ftco-section bg-light" id="section-gallery">
       <div class="container">
         <div class="row ftco-custom-gutters">
 
@@ -216,90 +149,118 @@
           </div>
 
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_1.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_1.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/01.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/01.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>           
+          <div class="col-md-4 ftco-animate">          
+            <a href="{{asset('images/principal/02.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/02.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
           </div>
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_2.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_2.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/03.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/03.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
           </div>
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_3.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_3.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
-            </a>
-          </div>
-
-          <div class="col-md-4 ftco-animate">
-            <a href="images/menu_2.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_2.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/04.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/04.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
           </div>
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_3.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_3.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/05.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/05.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
           </div>
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_1.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_1.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/06.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/06.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
-          </div>
-
-        </div>
+          </div>                                                 
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/07.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/06.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>   
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/08.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/08.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>   
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/09.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/09.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>             
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/10.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/10.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>  
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/11.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/11.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>  
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/12.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/12.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>                                
+        </div>        
       </div>
     </section>
     <!-- END section -->
 
 
-    <section class="ftco-section bg-light" id="section-catering">
+    <section class="ftco-section" id="section-catering">
       <div class="container">
         
         <div class="row">
           <div class="col-md-12 text-center mb-5 ftco-animate">
             <h4 class="ftco-sub-title">Nuestros Caterings</h4>
-            <h2 class="display-4">Caterings &amp; Servicios</h2>
+            <h2 class="display-4">Catering de puño y letra</h2>
             <div class="row justify-content-center">
               <div class="col-md-7">
-                <p class="lead">hola mauro far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                <p class="lead">Somos una Empresa de Catering en Málaga. Prestamos servicio a toda Andalucía preparando Carnes a la Brasa, Cócteles de aperitivos, comida casera preparada delante de los comensales.</p>
               </div>
             </div>
           </div>
           <div class="col-md-12">
-            <div class="owl-carousel ftco-owl">
+            <div class="owl-carousel ">
               @foreach ($caterings as $catering)
                   
                 <div class="item">
                   <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
                     <img src="{{ $catering->featured_image_url }}" alt="Free Template by Free-Template.co" class="img-fluid">
-                    <div class="media-body p-md-5 p-4">
-                    <h5 class="text-primary">{{$catering->price ? $catering->price : "0"}}</h5>
+                    <div class="media-body p-md-2">
                       <h5 class="mt-0 h4">{{$catering->name}}</h5>
-                    <p class="mb-4">{{$catering->description}}</p>
-
-                      <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Order Now!</a></p>
+                      <p class="mb-1">{{$catering->description}}</p>
+                      <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€":" "}}{{ $catering->price}}</h5>                      
+                      <p class="mb-0"><a href="#" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
                     </div>
                   </div>
                 </div>
               @endforeach
 
-              
-              
-
             </div>
           </div>
-          
+
+              <div class="col-md-12 d-flex justify-content-center ftco-animate">
+                <p class="lead"><a href="/caterings" class="btn btn-outline-burdeos btn-lg">Vea Nuestros Caterings</a></p>
+              </div>
+        
         </div>
       </div>
     </section>
     <!-- END section -->
 
-    <section class="ftco-section " id="section-contact">
+    <section class="ftco-section bg-light" id="section-contact">
       <div class="container">
         <div class="row">
 
-          <div class="col-md-12 text-center mb-5 ftco-animate">
+          <div class="col-md-12 text-center mb-3 ftco-animate">
             <h2 class="display-4">Contáctenos</h2>
             <div class="row justify-content-center">
               <div class="col-md-7">
@@ -308,7 +269,7 @@
             </div>
           </div>
 
-          <div class="col-md mb-5 ftco-animate">
+          <div class="col-md mb-1 ftco-animate">
             <form action="" method="post">
               <div class="form-group">
                 <label for="name" class="sr-only">Name</label>
@@ -323,7 +284,7 @@
                 <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Escriba su Mensaje"></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" class="btn btn-primary btn-lg" value="Enviar">
+                <input type="submit" class="btn btn-outline-burdeos btn-lg" value="Enviar">
               </div>
             </form>
           </div>
@@ -333,6 +294,26 @@
     </section>
     <!-- END section -->     
  
+    <section class="ftco-section" id="section-map">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-12 text-center mb-0 ftco-animate">
+            <h2 class="display-4 mb-4">Visítenos</h2>
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d476.5234595042515!2d-4.643653185164404!3d36.53831801189226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72e34d0a0ef303%3A0x237e23eba6eb396d!2sRestaurante%20Grill%20la%20Carreta!5e0!3m2!1ses-419!2sar!4v1590699871324!5m2!1ses-419!2sar" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <!-- END section -->     
+
+    
+
 @stop
 
 @section('scripts')

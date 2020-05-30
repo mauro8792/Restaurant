@@ -110,6 +110,12 @@
                                                                     <input type="hidden" name="recipecategory_id" value="{{$category->id}}"> 
                                                                 </div>
                                                             </div>
+                                                            <div class="row">
+                                                                <div class="form-group col-md-12">
+                                                                    <label for="name" class="col-form-label text-burdeos"><b>Receta:</b></label>
+                                                                    <input class="form-control" placeholder="Descripcion" type="text" name="short_description" value="{{ $recipe->short_description }}" autofocus/> 
+                                                                </div>
+                                                            </div>
 
                                                             <div class="row">
                                                                 <div class="form-group col-md-6">
@@ -220,6 +226,13 @@
                                 <input class="form-control" placeholder="Nombre" type="text" name="name" autofocus/>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="short_description" class="col-form-label text-burdeos"><b>Descripcion Corta:</b></label>
+                                <input class="form-control" id="short_description" placeholder="Descripcion" type="text" name="short_description" value="{{ $recipe->short_description }}" onpaste="contarcaracteres();" onkeyup="contarcaracteres();" autofocus/> 
+                                <div id="res">0 caractere/s</div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="form-group col-md-6">
@@ -312,5 +325,26 @@
             $("input.form-control.form-control-sm").focus();
             $("ul.pagination").addClass("pagination-sm");
         } );
+    </script>
+    <script>
+        function contarcaracteres(){
+            
+               //Numero de caracteres permitidos
+                   var total=120;
+    
+            setTimeout(function(){
+            var valor=document.getElementById('short_description');
+            var respuesta=document.getElementById('res');
+            var cantidad=valor.value.length;
+            document.getElementById('res').innerHTML = cantidad + ' caractere/s, te quedan ' + (total - cantidad) ;
+            if(cantidad>total){
+                respuesta.style.color = "red";
+            }
+            else {
+                respuesta.style.color = "black";
+            }
+            },10);
+    
+        }
     </script>
 @endsection

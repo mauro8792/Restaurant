@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\RecipeCategory;
 use App\Model\Recipe;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,7 @@ class RecipesController extends Controller
 {
     public function index(){    
         $recipes = Recipe::all();
-        return view('recipes')->with(compact('recipes'));
+        $categories = RecipeCategory::all();
+        return view('recipes')->with(compact('categories','recipes'));
     }
 }

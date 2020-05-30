@@ -47,4 +47,9 @@ class MenuController extends Controller
     	$categories = Category::orderBy('name')->get();        
         return view('menu2')->with(compact('categories'));
     }
+
+    public function index3(){
+        $categories = Category::orderBy('name')->get();        
+        return view('menu3')->with(compact('categories'));
+    }
 }

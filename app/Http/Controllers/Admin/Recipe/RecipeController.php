@@ -24,9 +24,9 @@ class RecipeController extends Controller
     }
     public function store(Request $request)
     {
-        //dd('hola');
         $recipe = new Recipe();
-        $recipe->name= $request->name; 
+        $recipe->name= $request->name;
+        $recipe->short_description =$request->short_description;
         $recipe->ingredients= $request->ingredients;
         $recipe->description= $request->description;
         $recipe->video= $request->video;
@@ -50,10 +50,11 @@ class RecipeController extends Controller
         return redirect('/admin/recipe-book/'.$request->recipecategory_id.'/recipes');
     }
     public function update(Request $request, $id){
-        //dd($request->recipe_id);
+        
 
         $recipe= Recipe::find($request->recipe_id);
         $recipe->name = $request->name;
+        $recipe->short_description =$request->short_description;
         $recipe->ingredients = $request->ingredients;
         $recipe->description = $request->description;
         $recipe->video = $request->video;

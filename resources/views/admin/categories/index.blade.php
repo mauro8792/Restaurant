@@ -40,8 +40,9 @@
                                       <table id="categoriesTable" class="table table-striped text-white">
                                       <thead>
                                           <tr>
-                                            <th class="text-center" width="30%">Nombre</th>
-                                            <th class="text-center" width="30%">Descripcion</th>                                            
+                                            <th class="text-center" width="20%">Nombre</th>
+                                            <th class="text-center" width="30%">Descripcion</th>
+                                            <th class="text-center" width="10%">Cant. Prod</th>                                            
                                             <th class="text-center" width="10%">Estado</th>
                                             <th class="text-center" width="10%">Imagen</th>
                                             <th class="text-right" width="20%">Opciones</th>
@@ -52,8 +53,13 @@
                                           <tr>
                                             <td class="text-left" data-toggle="tooltip" title="{{ $category->name }}"><a href="{{ url('/admin/categories/'.$category->id.'/products') }}" class="t-white">{{ Str::limit($category->name,35,'...') }}</a></td>
                                             <td class="text-left" data-toggle="tooltip" title="{{ $category->description }}">{{ Str::limit($category->description,35,'...') }}</td>                                            
-                                            <?php $show = ($category->show)?"fa fa-eye":"fa fa-eye-slash";?>
-                                            <td class="text-center"><i class="{{ $show }} text-burdeos"></i></td>                                                                                       
+                                            <td class="text-center" data-toggle="tooltip" title="Cantidad de productos">{{$category->products->count()}}</td>
+                                            <?php $show = ($category->show )?"fa fa-eye":"fa fa-eye-slash"; ?>
+                                            @if ($category->products->count()>=5)
+                                                <td class="text-center"><a href="{{ url('/admin/categories/'.$category->id.'/estatus')}}"> <i class="{{ $show }} text-burdeos"></i></a></td>
+                                            @else
+                                                <td class="text-center"><i class="fa fa-eye-slash text-burdeos"></i></td>    
+                                            @endif
                                             <td class="text-center"><img src="{{ $category->featured_image_url }}" height="50"></td>
                                             <td class="text-right">
                                                     <a href="#modalCategoryDetail{{$category->id}}" class="btn btn-outline-dark btn-sm" type="button" title="Detalle de {{ $category->name }}" data-toggle="modal"  data-target="#modalCategoryDetail{{$category->id}}">&nbsp;<i class="fa fa-info t-yellow">&nbsp;</i></a>
@@ -208,7 +214,7 @@
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="name" class="col-form-label text-burdeos">Nombre:</label>
-                                <input class="form-control" type="text" name="name" id="name">
+                                <input class="form-control" type="text" name="name" id="name" autofocus/> 
                             </div>
                         </div>
                         <div class="row">

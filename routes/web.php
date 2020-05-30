@@ -47,8 +47,9 @@ Auth::routes();
 Route::get('/menu', 'MenuController@index');
 Route::get('/menu1', 'MenuController@index1');
 Route::get('/menu2', 'MenuController@index2');
+Route::get('/menu3', 'MenuController@index3');
 Route::get('/recetas', 'RecipesController@index');
-
+Route::get('/caterings', 'CateringsController@index');
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/users', 'UserController@index'); // listado
@@ -66,6 +67,7 @@ Route::prefix('admin')->namespace('Admin\Menu')->middleware(['auth'])
         Route::get('/categories/{category}/edit', 'CategoryController@edit'); // formulario edición
         Route::post('/categories/{category}/edit', 'CategoryController@update'); // actualizar
         Route::delete('/categories', 'CategoryController@destroy'); // form eliminar
+        Route::get('/categories/{id}/estatus', 'CategoryController@changeState'); // formulario
         //rutas de productos del menu
         Route::get('/categories/{id}/products', 'ProductController@index'); // listado
         Route::get('/categories/{id}/products/create', 'ProductController@create'); // formulario
