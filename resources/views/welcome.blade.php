@@ -149,38 +149,66 @@
           </div>
 
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_1.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_1.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/01.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/01.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>           
+          <div class="col-md-4 ftco-animate">          
+            <a href="{{asset('images/principal/02.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/02.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
           </div>
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_2.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_2.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/03.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/03.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
           </div>
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_3.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_3.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
-            </a>
-          </div>
-
-          <div class="col-md-4 ftco-animate">
-            <a href="images/menu_2.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_2.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/04.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/04.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
           </div>
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_3.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_3.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/05.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/05.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
           </div>
           <div class="col-md-4 ftco-animate">
-            <a href="images/menu_1.jpg" class="ftco-thumbnail image-popup">
-              <img src="images/menu_1.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
+            <a href="{{asset('images/principal/06.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/06.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
             </a>
-          </div>
-
-        </div>
+          </div>                                                 
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/07.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/06.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>   
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/08.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/08.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>   
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/09.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/09.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>             
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/10.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/10.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>  
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/11.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/11.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>  
+          <div class="col-md-4 ftco-animate">
+            <a href="{{asset('images/principal/12.jpg')}}" class="ftco-thumbnail image-popup">
+              <img src="{{asset('images/principal/12.jpg')}}" alt="Restaurant Barbacoa La Carreta" class="img-fluid">
+            </a>
+          </div>                                
+        </div>        
       </div>
     </section>
     <!-- END section -->

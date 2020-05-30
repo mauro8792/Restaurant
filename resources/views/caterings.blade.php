@@ -20,7 +20,7 @@
     </section>
     <!-- END section -->
 
-    <section class="ftco-section" id="section-caterings">
+    <section class="ftco-section bg-light" id="section-caterings">
       <div class="container">
         
         <div class="row">
@@ -38,29 +38,22 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12">
-            <div class="owl-carousel ">
-              @foreach ($caterings as $catering)
-                  
-                <div class="item">
-                  <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                    <img src="{{ $catering->featured_image_url }}" alt="Free Template by Free-Template.co" class="img-fluid">
-                    <div class="media-body p-md-2">
-                      <h5 class="mt-0 h4">{{$catering->name}}</h5>
-                      <p class="mb-1">{{$catering->description}}</p>
-                      <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€":" "}}{{ $catering->price}}</h5>                      
-                      <p class="mb-0"><a href="#" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
-                    </div>
-                  </div>
+
+          <div class="row d-flex justify-content-center">          
+          @foreach ($caterings as $catering)
+            <div class="col-lg-4 col-md-6 col-sm-6">
+              <div class="media d-block mb-4 text-center ftco-media ftco-animate">
+                <img src="{{ $catering->featured_image_url }}" alt="Free Template by Free-Template.co" class="img-fluid">
+                <div class="media-body p-md-1">
+                    <h5 class="mt-0 h4">{{$catering->name}}</h5>
+                    <p class="mb-1">{{$catering->description}}</p>
+                    <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€":" "}}{{ $catering->price}}</h5>                      
+                    <p class="mb-0"><a href="#" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
                 </div>
-              @endforeach
-
-            </div>
-          </div>
-
-              <div class="col-md-12  d-flex justify-content-center">
-                <p class="lead"><a href="/caterings" class="btn btn-outline-burdeos btn-lg">Caterings</a></p>
               </div>
+            </div>  
+          @endforeach
+          </div>
         
         </div>
       </div>

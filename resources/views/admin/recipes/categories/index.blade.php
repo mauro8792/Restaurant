@@ -198,7 +198,7 @@
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="name" class="col-form-label text-burdeos">Nombre:</label>
-                                <input class="form-control" type="text" name="name" id="name">
+                                <input class="form-control" type="text" name="name" id="name" autofocus>
                             </div>
                         </div>
                         <div class="row">
