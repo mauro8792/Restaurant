@@ -13,4 +13,9 @@ class RecipesController extends Controller
         $categories = RecipeCategory::all();
         return view('recipes')->with(compact('categories','recipes'));
     }
+
+    public function show($id){
+        $recipe = Recipe::find($id);
+        return view('recipes.show')->with(compact('recipe'));
+    }
 }

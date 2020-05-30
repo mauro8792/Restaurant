@@ -63,8 +63,9 @@
                         </div>
                         <div class="media-body p-md-1">
                           <h5 class="mt-0 h4">{{$recipe->name}}</h5>
-                          <p class="mt-4 mb-4"><a href="#" class="btn btn-burdeos btn-sm">Ver Receta</a></p>
-                        </div>
+                        <p class="mt-4 mb-4"><a href="{{ url('/recetas/'.$recipe->id)}}" class="btn btn-burdeos btn-sm">Ver Receta</a></p>
+                        
+                      </div>
                       </div>
                     </div>  
                   @endforeach
