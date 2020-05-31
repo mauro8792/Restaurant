@@ -240,7 +240,7 @@
                       <h5 class="mt-0 h4">{{$catering->name}}</h5>
                       <p class="mb-1">{{$catering->description}}</p>
                       <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€":" "}}{{ $catering->price}}</h5>                      
-                      <p class="mb-0"><a href="#" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
+                      <p class="mb-2"><a href="{{ url('/caterings/'.$catering->id)}}" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
                     </div>
                   </div>
                 </div>
@@ -250,7 +250,7 @@
           </div>
 
               <div class="col-md-12 d-flex justify-content-center ftco-animate">
-                <p class="lead"><a href="/caterings" class="btn btn-outline-burdeos btn-lg">Vea Nuestros Caterings</a></p>
+                <p class="lead"><a href="{{ url('/caterings')}}" class="btn btn-outline-burdeos btn-lg">Vea Nuestros Caterings</a></p>
               </div>
         
         </div>

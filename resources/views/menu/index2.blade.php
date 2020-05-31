@@ -22,7 +22,7 @@
     </section>
     <!-- END section -->
    
-    <section class="ftco-section" id="section-menu">
+    <section class="ftco-section bg-light" id="section-menu">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center mb-5 mt-5 ftco-animate">

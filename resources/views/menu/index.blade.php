@@ -22,7 +22,7 @@
     </section>
     <!-- END section -->
    
-    <section class="ftco-section" id="section-menu">
+    <section class="ftco-section bg-light" id="section-menu">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center mb-5 mt-5 ftco-animate">
@@ -54,20 +54,17 @@
                     <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
                         <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Restaurante La Carreta">
                     </div>
-                  </div>                      
+                  </div>    
+               
                   <div class="row">
                       @foreach ($category->products as $product)
-                      <div class="col-md-6 ftco-animate">   
-                        <div class="row-col-2 media menu-item">
-                          <p>
-                            <span class='descripcion'>{{$product->name}} 
-                              <small>{{$product->description}}</small> </span> <br>
-                            <span class='precio'>{{$product->price}} </span>
-                            
-                     
-                     
-                          </p>
-                        </div>                          
+
+                      <div class="col-lg-6 ftco-animate">   
+                          <p class="p">
+                            <span class='descripcion text-burdeos'>{{$product->name}} <span class='descripcion font12'>  {{$product->description}}</span></span>                        
+                            <span class='precio text-burdeos'>{{$product->price}}</span>
+                          </p>                  
+
                       </div>
                       @endforeach
                   </div>
@@ -80,7 +77,7 @@
     <!-- END section -->
 
       
-    <section class="ftco-section bg-light" id="section-menu">
+    <section class="ftco-section" id="section-menu">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center mb-5 ftco-animate">
@@ -92,9 +89,9 @@
             </div>
           </div>
 
-          <div class="col-md-12 ">
+          <div class="col-md-12 bg-light">
             <div class="item">
-              <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
+              <div class="media d-block mb-3 mt-3 text-center ftco-media ftco-animate border-0">
                 <div class="row pt-5 pb-5">
                   <div class="col-md-6">
                     <img src="{{ $menuDelDia->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
