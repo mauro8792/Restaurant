@@ -242,7 +242,7 @@
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="short_description" class="col-form-label text-burdeos"><b>Descripcion Corta:</b></label>
-                                <input class="form-control" id="short_description" placeholder="Descripcion" type="text" name="short_description" value="{{ $recipe->short_description }}" onpaste="contarcaracteres();" onkeyup="contarcaracteres();"> 
+                                <input class="form-control" id="add_short_description" placeholder="Descripcion" type="text" name="short_description"  onpaste="contarcaracteres();" onkeyup="contarcaracteres();" /> 
                                 <div id="res">0 caractere/s</div>
                             </div>
                         </div>
@@ -346,9 +346,11 @@
                    var total=120;
     
             setTimeout(function(){
-            var valor=document.getElementById('short_description');
+            var valor=document.getElementById('add_short_description');
             var respuesta=document.getElementById('res');
             var cantidad=valor.value.length;
+            //console.log(cantidad);
+            
             document.getElementById('res').innerHTML = cantidad + ' caractere/s, te quedan ' + (total - cantidad) ;
             if(cantidad>total){
                 respuesta.style.color = "red";

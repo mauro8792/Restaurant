@@ -9,6 +9,17 @@ class Recipe extends Model
     protected $fillable = [
         'name','short_description','ingredients', 'description','video',
     ];
+    public static $messages = [
+        'name.required' => 'Es necesario ingresar un nombre para la receta.',
+        'name.min' => 'El nombre de la receta debe tener al menos 3 caracteres.',
+        'description.required' => 'Es necesario que la receta contenga instrucciones.',
+        'ingredients.required' => 'Es necesario que la receta contenga ingredientes.'
+    ];
+    public static $rules = [
+        'name' => 'required|min:3',
+        'description' => 'required',
+        'ingredients' => 'required'
+    ];
 
     public function category()
     {
