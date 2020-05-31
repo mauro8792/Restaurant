@@ -13,7 +13,7 @@
           <div class="col-md-12">
             <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Nuestras Recetas</h1>
             <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left"></h2>    
-            <p><a href="#section-recipes" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
+            
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
                   </div>
                   <div class="col-5 text-left">
                     <div class="tab-content" id="nav-tabContent">
-                        <?php $str = str_replace("\n", ' - ', $recipe->ingredients);?>
+                        <?php $str = str_replace("*", ' - ', $recipe->ingredients);?>
                         <pre class="text-burdeos "><b>Ingredientes:</b><BR>{{ $str }}</pre>
                     </div>
                   </div>

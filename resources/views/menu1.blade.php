@@ -60,8 +60,12 @@
                       <div class="col-md-6 ftco-animate">   
                         <div class="row-col-2 media menu-item">
                           <p>
-                            <span class='descripcion'>{{$product->name}}</span>
-                            <span class='precio'>{{$product->price}}</span>
+                            <span class='descripcion'>{{$product->name}} 
+                              <small>{{$product->description}}</small> </span> <br>
+                            <span class='precio'>{{$product->price}} </span>
+                            
+                     
+                     
                           </p>
                         </div>                          
                       </div>

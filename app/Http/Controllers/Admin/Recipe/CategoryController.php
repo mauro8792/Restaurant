@@ -55,10 +55,38 @@ class CategoryController extends Controller
             }
             return back()->with(compact('notification'));
         }else{
-            $notification = "No se puede eliminar la categoria por que tiene productos cargados";
+            $notification = "No se puede eliminar la categoria por que tiene recetas cargadas";
             return back()->with(compact('notification'));
         }
 
+    }
+
+    public function update(Request $request, RecipeCategory $category)
+    {
+        //$this->validate($request, Category::$rules, Category::$messages);
+
+        $category->update($request->only('name', 'description'));
+        //dd($request->file('image'));
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $path = public_path() . '/images/recipes/categories/';
+            $fileName = uniqid() . '-' . $file->getClientOriginalName();
+            $moved = $file->move($path, $fileName);
+
+            // update category
+            if ($moved) {
+                $previousPath = $path . '/' . $category->image;
+
+                $category->image = $fileName;
+                //dd($fileName);
+                $saved = $category->save(); // UPDATE
+
+                if ($saved)
+                    File::delete($previousPath);
+            }
+        }
+
+        return redirect('/admin/recipes/categories');
     }
 
 }

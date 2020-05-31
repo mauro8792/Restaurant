@@ -43,7 +43,6 @@ class ProductController extends Controller
         $messages = [
             'name.required' => 'Es necesario ingresar un nombre para el producto.',
             'name.min' => 'El nombre del producto debe tener al menos 3 caracteres.',
-            'description.required' => 'La descripción corta es un campo obligatorio.',
             'description.max' => 'La descripción corta solo admite hasta 200 caracteres.',
             'price.required' => 'Es obligatorio definir un precio para el producto.',
             'price.numeric' => 'Ingrese un precio válido.',
@@ -51,7 +50,6 @@ class ProductController extends Controller
         ];
         $rules = [
             'name' => 'required|min:3',
-            'description' => 'required|max:200',
             'price' => 'required|numeric|min:0'
         ];
         $this->validate($request, $rules, $messages);
