@@ -13,14 +13,14 @@
           <div class="col-md-12">
             <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Nuestro Catering</h1>
             <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left"></h2>    
-            <p><a href="#section-recipe" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
+            <p><a href="#section-catering" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
           </div>
         </div>
       </div>
     </section>
     <!-- END section -->
 
-    <section class="ftco-section bg-light" id="section-recipe">
+    <section class="ftco-section bg-light" id="section-catering">
       <div class="container">
       
         <div class="row">
