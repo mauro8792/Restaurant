@@ -73,6 +73,7 @@ body {
       </div>
     </section>
     <!-- END section -->
+    
     <section class="ftco-section bg-light" id="section-menu">
       <div class="d-flex" id="wrapper">
 
@@ -83,8 +84,7 @@ body {
             @foreach ($categories as $category)
               <?php $showActive=($loop->first)?"active":" ";?>
               <?php $showAriaSelected=($loop->first)?"true":"false";?>
-              <a href="#" class="list-group-item list-group-item-action bg-light"
-              id="pills-{{$category->id}}-tab" data-toggle="pill" href="#pills-{{$category->id}}" 
+              <a class="list-group-item list-group-item-action bg-light" id="pills-{{$category->id}}-tab" data-toggle="pill" href="#pills-{{$category->id}}" 
               role="tab" aria-controls="pills-{{$category->id}}" aria-selected="{{ $showAriaSelected }}">{{$category->name}}</a>
                 
             @endforeach
@@ -94,50 +94,19 @@ body {
         <!-- /#sidebar-wrapper -->
     
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-    
-          <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            {{-- <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-    
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button> --}}
-    
-            {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </li>
-              </ul>
-            </div> --}}
-          </nav>
-    
-          <div class="container-fluid">
+
+        <div class="tab-content text-left ml-3">
             @foreach ($categories as $category)       
                   <?php $showActive=($loop->first)?"show active":" ";?>                      
-                  <div class="tab-pane fade {{ $showActive}}" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
+                  <div class="tab-pane fade {{ $showActive}}" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">              
                     <div class="row">
                       <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
-                          <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Free Template by Free-Template.co">
+                          <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Restaurante La Carreta">
                       </div>
                     </div>                      
                     <div class="row">
                         @foreach ($category->products as $product)
-                        <div class="col-md-4 ftco-animate">   
+                        <div class="col-md-4 ftco-animate" id="pills-{{$category->id}}">   
                           <div class="media menu-item">
                             <div class="media-body">
                               <h5 class="mt-0">{{$product->name}}</h5>
@@ -151,7 +120,7 @@ body {
                   </div>
                   @endforeach
           </div>
-        </div>
+
         <!-- /#page-content-wrapper -->
     
       </div>

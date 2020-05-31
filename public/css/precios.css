@@ -1,0 +1,46 @@
+*, *:after, *:before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+* {margin:0;padding:0;border: 0 none;position: relative;}
+pre {
+  padding-top: 1rem;
+  font-family: muli;
+  font-weight: 300;
+  font-style: italic;
+}
+.p {
+  width: 90%;
+  max-width: 35rem;
+  min-width: 300px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+  padding-right: 4rem;
+  margin-bottom: .5rem;
+}
+.p:before {
+  content: '';
+  position: absolute;
+  bottom: .4rem;
+  width: 100%;
+  height: 0;
+  line-height: 0;
+}
+.descripcion {
+  display: inline;
+  z-index: 1;
+  padding-right: .2rem;
+}
+.precio {
+  position: absolute;
+  min-width: 4rem;
+  bottom: 0;
+  right: 0;
+  padding-left: .3rem;
+  text-align: right;
+  z-index: 2;
+}
+.precio:before {
+  content: '€';
+}

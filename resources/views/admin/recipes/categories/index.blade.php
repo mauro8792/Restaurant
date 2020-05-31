@@ -95,7 +95,7 @@
                                                           <h5 class="modal-title text-white" id="modalCategoryEdit{{$category->id}}Title">Modificar Datos de  {{ $category->name }}</h5>
                                                           <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                                       </div>
-                                                      <form method="post" action="{{ url('/admin/categories/'.$category->id.'/edit') }}" enctype="multipart/form-data">
+                                                      <form method="post" action="{{ url('/admin/recipes/categories/'.$category->id.'/edit') }}" enctype="multipart/form-data">
                                                       <div class="modal-body text-left">
                                                           {{ csrf_field() }}
                                                           <input type="hidden" name="id" value="{{ $category->id }}">

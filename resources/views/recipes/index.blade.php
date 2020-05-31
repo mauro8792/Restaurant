@@ -50,7 +50,7 @@
               <div class="tab-pane fade {{ $showActive }}" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
                 <div class="row">
                   <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
-                      <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Free Template by Free-Template.co">
+                      <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Restaurante La Carreta">
                   </div>
                 </div>                      
                 
@@ -63,8 +63,9 @@
                         </div>
                         <div class="media-body p-md-1">
                           <h5 class="mt-0 h4">{{$recipe->name}}</h5>
-                          <p class="mt-4 mb-4"><a href="#" class="btn btn-burdeos btn-sm">Ver Receta</a></p>
-                        </div>
+                        <p class="mt-4 mb-4"><a href="{{ url('/recetas/'.$recipe->id)}}" class="btn btn-burdeos btn-sm">Ver Receta</a></p>
+                        
+                      </div>
                       </div>
                     </div>  
                   @endforeach

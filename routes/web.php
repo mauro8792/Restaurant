@@ -48,8 +48,11 @@ Route::get('/menu', 'MenuController@index');
 Route::get('/menu1', 'MenuController@index1');
 Route::get('/menu2', 'MenuController@index2');
 Route::get('/menu3', 'MenuController@index3');
+Route::get('/menu4', 'MenuController@index4');
 Route::get('/recetas', 'RecipesController@index');
+Route::get('/recetas/{id}', 'RecipesController@show');
 Route::get('/caterings', 'CateringsController@index');
+Route::get('/caterings/{id}', 'CateringsController@show');
 
 Route::prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/users', 'UserController@index'); // listado

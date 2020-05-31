@@ -28,4 +28,14 @@ class Recipe extends Model
         $embed->setAttribute(['width' => 348]);
         return $embed->getHtml();
     }
+    public function getVideoBigHtmlAttribute()
+    {
+        $embed = Embed::make($this->video)->parseUrl();
+
+        if (!$embed)
+            return '';
+
+        $embed->setAttribute(['width' => 600]);
+        return $embed->getHtml();
+    }
 }
