@@ -113,6 +113,7 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {  
+       
        $cat = Category::findOrFail($request->id);
         if(sizeof($cat->products) == 0){
             try {
@@ -127,7 +128,8 @@ class CategoryController extends Controller
             return back()->with(compact('notification'));
         }else{
             $notification = "No se puede eliminar la categoria por que tiene productos cargados";
-            return back()->with(compact('notification'));
+            return back()->with(compact('notification'));           
+            
         }
 
     }

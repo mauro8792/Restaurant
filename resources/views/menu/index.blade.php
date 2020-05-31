@@ -58,11 +58,13 @@
                
                   <div class="row">
                       @foreach ($category->products as $product)
+
                       <div class="col-lg-6 ftco-animate">   
                           <p class="p">
                             <span class='descripcion text-burdeos'>{{$product->name}} <span class='descripcion font12'>  {{$product->description}}</span></span>                        
                             <span class='precio text-burdeos'>{{$product->price}}</span>
                           </p>                  
+
                       </div>
                       @endforeach
                   </div>
