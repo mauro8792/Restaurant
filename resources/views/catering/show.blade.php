@@ -7,11 +7,11 @@
 @stop
 
 @section('content')
-<section class="ftco-cover" style="background-image: url({{ asset('/images/bg_3.jpg') }});" id="section-home">
+    <section class="ftco-cover" style="background-image: url({{ asset('/images/bg_3.jpg') }});" id="section-home">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center ftco-vh-100">
           <div class="col-md-12">
-            <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Nuestras Recetas</h1>
+            <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Nuestro Catering</h1>
             <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left"></h2>    
             <p><a href="#section-recipe" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
           </div>
@@ -25,27 +25,20 @@
       
         <div class="row">
           <div class="col-md-12 text-center mb-5 ftco-animate">
-            <h2 class="display-4">{{$recipe->name}}</h2>    
-            <p class="lead">{{$recipe->short_description}}</p>                
+            <h2 class="display-4">{{$catering->name}}</h2>                   
           </div>
         </div>
 
         <div class="row">
           <div class="col-md-5 ftco-animate mb-5">
-          {!! $recipe->video_big_html !!}
+            <img src="{{ $catering->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
           </div>
 
           <div class="col-md-2"></div>
   
           <div class="col-md-5 ftco-animate" data-animate-effect="fadeInRight">
-            <?php $str = str_replace("\n", ' - ', $recipe->ingredients);?>
-            <pre class="text-burdeos "><b>Ingredientes:</b><BR>{{ $str }}</pre>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12 text-left ftco-animate">
-            <p class="text-burdeos"><b>Paso a paso:</b><BR>{{ $recipe->description }}</p>                
+            <p class="lead">{{$catering->description}}</p> 
+            <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€":" "}}{{ $catering->price}}</h5>              
           </div>
         </div>
 

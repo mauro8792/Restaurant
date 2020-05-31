@@ -285,6 +285,7 @@
                     {"bSortable": true},
                     {"bSortable": false},
                     {"bSortable": true},                    
+                    {"bSortable": true},                    
                     {"bSortable": false, 'searchable': false},
                     {"bSortable": false, 'searchable': false}
                 ],

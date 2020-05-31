@@ -48,7 +48,7 @@
                     <h5 class="mt-0 h4">{{$catering->name}}</h5>
                     <p class="mb-1">{{$catering->description}}</p>
                     <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€":" "}}{{ $catering->price}}</h5>                      
-                    <p class="mb-0"><a href="#" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
+                    <p class="mb-2"><a href="{{ url('/caterings/'.$catering->id)}}" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
                 </div>
               </div>
             </div>  

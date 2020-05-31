@@ -66,6 +66,11 @@
                                                                     <p class="text-burdeos"><b>Receta:</b><BR>{{ $recipe->name}}</p>
                                                                 </div>
                                                             </div>
+                                                            <div class="row">                                                            
+                                                                <div class="col-md-12 text-burdeos">
+                                                                    <p class="text-burdeos"><b>Descripcion Corta:</b><BR>{{ $recipe->short_description }}</p>
+                                                                </div>                                                                
+                                                            </div>                                                             
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <?php $str = str_replace("\n", ' - ', $recipe->ingredients);?>
@@ -110,10 +115,12 @@
                                                                     <input type="hidden" name="recipecategory_id" value="{{$category->id}}"> 
                                                                 </div>
                                                             </div>
+
                                                             <div class="row">
                                                                 <div class="form-group col-md-12">
-                                                                    <label for="name" class="col-form-label text-burdeos"><b>Receta:</b></label>
-                                                                    <input class="form-control" placeholder="Descripcion" type="text" name="short_description" value="{{ $recipe->short_description }}" autofocus/> 
+                                                                    <label for="short_description" class="col-form-label text-burdeos"><b>Descripcion Corta:</b></label>
+                                                                    <input class="form-control" id="short_description" placeholder="Descripcion Corta" type="text" name="short_description" value="{{ $recipe->short_description }}" onpaste="contarcaracteres();" onkeyup="contarcaracteres();"/> 
+                                                                    <div id="res">0 caractere/s</div>
                                                                 </div>
                                                             </div>
 
@@ -167,6 +174,11 @@
                                                                     <p class="text-burdeos"><b>Receta:</b><BR>{{ $recipe->name}}</p>
                                                                 </div>
                                                             </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12 text-burdeos">
+                                                                    <p class="text-burdeos"><b>Descripcion Corta:</b><BR>{{ $recipe->short_description }}</p>
+                                                                </div>         
+                                                            </div>                                                
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <pre class="text-burdeos"><b>Ingredientes:</b><BR>{{ $recipe->ingredients}}</pre>
@@ -226,10 +238,11 @@
                                 <input class="form-control" placeholder="Nombre" type="text" name="name" autofocus/>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="short_description" class="col-form-label text-burdeos"><b>Descripcion Corta:</b></label>
-                                <input class="form-control" id="short_description" placeholder="Descripcion" type="text" name="short_description" value="{{ $recipe->short_description }}" onpaste="contarcaracteres();" onkeyup="contarcaracteres();" autofocus/> 
+                                <input class="form-control" id="short_description" placeholder="Descripcion" type="text" name="short_description" value="{{ $recipe->short_description }}" onpaste="contarcaracteres();" onkeyup="contarcaracteres();"> 
                                 <div id="res">0 caractere/s</div>
                             </div>
                         </div>
