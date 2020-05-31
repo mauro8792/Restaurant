@@ -13,7 +13,7 @@
           <div class="col-md-12">
             <h1 class="ftco-heading ftco-animate text-left mb-3">Bienvenido a <BR>Nuestras Recetas</h1>
             <h2 class="h5 ftco-subheading mb-5 ftco-animate text-left"></h2>    
-            
+
           </div>
         </div>
       </div>
@@ -50,6 +50,7 @@
                 </div>
             </div>
             
+
 
           </div>
 
