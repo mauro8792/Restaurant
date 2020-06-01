@@ -32,13 +32,24 @@
 
     <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/cookiesPolicy.css') }}">    
     @yield('styles')
 </head>
 <body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
     @include('includes.navbar')  
     <div id="app">                            
-        <main class="">
+        <main class="">                 
             @yield('content')
+            <!--//COOKIES Policy -->
+            <div id="barraaceptacion" style="display: block;">
+                <div class="inner">
+                    <p>Este sitio web utiliza cookies para brindarle un servicio más personalizado y receptivo. Al usar este sitio web, acepta el uso de cookies. Si necesita más información o prefiere no aceptar cookies, visite nuestra Política de privacidad. 
+ en cumplimiento del Real Decreto-ley 13/2012. Si continúa navegando consideramos que acepta el uso de cookies.
+                    <a href="javascript:void(0);" class="ok" onclick="PonerCookie();"><b>ACEPTAR</b></a> | 
+                    <a href="{{ url('/cookiesPolicy') }}" target="_blank" class="info">Más información</a></p>
+                </div>
+            </div>            
+            <!-- END COOKIES Policy -->                  
         </main>
     </div>
     @include('includes.footer')      
@@ -63,6 +74,7 @@
     <script src="{{ asset('js/google-map.js') }}"></script>
 
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/cookiesPolicy.js') }}"></script>   
     @yield('scripts')
 </html>
 

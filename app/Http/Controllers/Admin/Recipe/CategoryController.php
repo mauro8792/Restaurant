@@ -21,8 +21,8 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
-        $category = RecipeCategory::create($request->only('name', 'description'));
-        
+        $this->validate($request, RecipeCategory::$rules, RecipeCategory::$messages);
+        $category = RecipeCategory::create($request->only('name', 'description'));       
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -63,10 +63,9 @@ class CategoryController extends Controller
 
     public function update(Request $request, RecipeCategory $category)
     {
-        //$this->validate($request, Category::$rules, Category::$messages);
+        $this->validate($request, RecipeCategory::$rules, RecipeCategory::$messages);
 
         $category->update($request->only('name', 'description'));
-        //dd($request->file('image'));
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $path = public_path() . '/images/recipes/categories/';

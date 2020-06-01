@@ -18,7 +18,7 @@
             <p><a href="#section-about" class="btn btn-outline-white btn-lg ftco-animate">Continuar</a></p>
           </div>
         </div>
-      </div>
+      </div> 
     </section>
     <!-- END section -->
     
@@ -142,10 +142,10 @@
         <div class="row ftco-custom-gutters">
 
           <div class="col-md-12 text-center mb-1 ftco-animate">
-            <h2 class="display-4">Food Gallery</h2>
+            <h2 class="display-4">Galería de Fotos</h2>
             <div class="row justify-content-center">
               <div class="col-md-7">
-                <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <!--  <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
               </div>
             </div>
           </div>
@@ -221,7 +221,7 @@
         
         <div class="row">
           <div class="col-md-12 text-center mb-5 ftco-animate">
-            <h4 class="ftco-sub-title">Nuestros Caterings</h4>
+            <h4 class="ftco-sub-title">Gauchito Catering</h4>
             <h2 class="display-4">Catering de puño y letra</h2>
             <div class="row justify-content-center">
               <div class="col-md-7">
@@ -266,7 +266,7 @@
             <h2 class="display-4">Contáctenos</h2>
             <div class="row justify-content-center">
               <div class="col-md-7">
-                <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+               <!-- <p class="lead">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> -->
               </div>
             </div>
           </div>
@@ -303,9 +303,7 @@
           <div class="col-md-12 text-center mb-0 ftco-animate">
             <h2 class="display-4 mb-4">Visítenos</h2>
             <div class="row justify-content-center">
-              <div class="col-md-7">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d476.5234595042515!2d-4.643653185164404!3d36.53831801189226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72e34d0a0ef303%3A0x237e23eba6eb396d!2sRestaurante%20Grill%20la%20Carreta!5e0!3m2!1ses-419!2sar!4v1590699871324!5m2!1ses-419!2sar" width="400" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-              </div>
             </div>
           </div>
 

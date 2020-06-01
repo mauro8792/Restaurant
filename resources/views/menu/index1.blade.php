@@ -3,7 +3,7 @@
 @section('title', 'La Carreta')
 
 @section('styles')
-
+    <link rel="stylesheet" href="{{ asset('css/precios.css') }}">
 @stop
 
 @section('content')
@@ -54,17 +54,17 @@
                     <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
                         <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Restaurante La Carreta">
                     </div>
-                  </div>                      
+                  </div>    
+               
                   <div class="row">
                       @foreach ($category->products as $product)
-                      <div class="col-md-4 ftco-animate">   
-                        <div class="media menu-item">
-                          <div class="media-body">
-                            <h5 class="mt-0">{{$product->name}}</h5>
-                            <p>{{$product->description}}</p>
-                            <h6 class="text-primary menu-price">€{{$product->price}}</h6>
-                          </div>
-                        </div>                          
+
+                      <div class="col-lg-6 ftco-animate">   
+                          <p class="p">
+                            <span class='descripcion text-burdeos'>{{$product->name}} <span class='descripcion font12'>  {{$product->description}}</span></span>                        
+                            <span class='precio text-burdeos'>{{$product->price}}</span>
+                          </p>                  
+
                       </div>
                       @endforeach
                   </div>
@@ -89,9 +89,9 @@
             </div>
           </div>
 
-          <div class="col-md-12 ">
+          <div class="col-md-12 bg-light">
             <div class="item">
-              <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
+              <div class="media d-block mb-3 mt-3 text-center ftco-media ftco-animate border-0">
                 <div class="row pt-5 pb-5">
                   <div class="col-md-6">
                     <img src="{{ $menuDelDia->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
@@ -115,5 +115,5 @@
 @stop
 
 @section('scripts')
-
+  <script src="{{ asset ('js/prefixfree.min.js') }}"></script>
 @stop

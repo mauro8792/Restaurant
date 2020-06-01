@@ -23,6 +23,9 @@ Route::get('logout', function ()
 
 Route::get('/', 'WelcomeController@index');
 Route::get('/home', 'WelcomeController@index')->name('home');
+Route::get('/cookiesPolicy', function() { 
+    return view('/cookiesPolicy'); 
+}); 
 Route::get('/sabout', function(){
     return redirect()->to(route('home').'#section-about');
 });
