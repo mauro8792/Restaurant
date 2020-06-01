@@ -20,6 +20,7 @@
     </section>
     <!-- END section -->
 
+
     <section class="ftco-section bg-light" id="section-recipe">
       <div class="container">
         <div class="row">
@@ -28,6 +29,7 @@
                 <p class="lead">{{$recipe->short_description}}</p>                                 
               </div>
             </div>
+
 
         <div class="row">
           <div class="col-md-5 ftco-animate mb-5">
@@ -38,6 +40,7 @@
   
           <div class="col-md-5 ftco-animate" data-animate-effect="fadeInRight">
               <?php $str = str_replace("*", ' - ', $recipe->ingredients);?>
+
               <pre class="text-burdeos "><b>Ingredientes:</b><BR>{{ $str }}</pre>      
           </div>
         </div>
@@ -46,6 +49,7 @@
               <div class="col-md-12 text-left mb-5 ftco-animate">
                   <p class="text-burdeos"><b>Paso a paso:</b><BR>{{ $recipe->description }}</p>                               
               </div>
+
         </div>
 
 
