@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-md-6 mt-3">
               <div class="ftco-footer-widget mb-4">
-                  <p class="ftco-animate">Restaurant Barbacoa La Carreta</p>
+                  <p class="ftco-animate">Restaurante Barbacoa La Carreta</p>
                   <p class="ftco-animate">Calle Rio Padron S/N, 29651 Las lagunas, Mijas Costa, Malaga, España</p>
                   <p class="ftco-animate">Teléfono 951260400</p>
               </div>
