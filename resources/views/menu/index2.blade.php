@@ -28,58 +28,90 @@
           <div class="col-md-12 text-center mb-5 mt-5 ftco-animate">
             <h2 class="display-4">Nuestro menú</h2>
             <div class="row justify-content-center">
-              <div class="col-md-9">
-                <p class="lead">Disponemos de carnes de excelente calidad, cortes argentinos y nacionales para hacer a la barbacoa (huelen que alimentan) y una carta basada en comida mediterránea exquisita.</p>
+              <div class="col-md-7">
+                <p class="lead">Disfrute de nuestro exquisito menú</p>
               </div>
             </div>
           </div>
 
           <div class="col-md-12 text-center">
-            <div class="row">
-                <div class="col-4">
-                  <div class="list-group" id="list-tab" role="tablist">
-                    @foreach ($categories as $category)
-                      <?php $showActive=($loop->first)?"active":" ";?>  
-                      <a class="list-group-item list-group-item-action {{$showActive}}" id="list-{{$category->id}}-list" data-toggle="list" href="#{{$category->id}}" role="tab" aria-controls="{{$category->name}}">{{$category->name}}</a>
-                    @endforeach
-                   
-                  </div>
-                </div>
-                <div class="col-8">
-                  <div class="tab-content" id="nav-tabContent">
-                    @foreach ($categories as $category)
-                      <?php $showActive=($loop->first)?"show active":" ";?>  
-                        <div class="tab-pane fade {{$showActive}}" id="list-{{$category->id}}" role="tabpanel" aria-labelledby="list-{{$category->name}}-list">
-                          <div class="row">
-                            @foreach ($category->products as $product)
-                            <div class="col-md-4 ftco-animate">   
-                              <div class="media menu-item">
-                                <div class="media-body">
-                                  <h5 class="mt-0">{{$product->name}}</h5>
-                                  <p>{{$product->description}}</p>
-                                  <h6 class="text-primary menu-price">${{$product->price}}</h6>
-                                </div>
-                              </div>                          
-                            </div>
-                            @endforeach
-                        </div>
-                        </div>
-                        
-                    @endforeach
-                    
-                  </div>
-                </div>
-              </div>
-            
+            <ul class="nav ftco-tab-nav nav-pills mb-5" id="pills-tab" role="tablist">
+              @foreach ($categories as $category)
+                <li class="nav-item ftco-animate mb-2">
+                  <?php $showActive=($loop->first)?"active":" ";?>
+                  <?php $showAriaSelected=($loop->first)?"true":"false";?>
+                  <a class="nav-link {{ $showActive }}" id="pills-{{$category->id}}-tab" data-toggle="pill" href="#pills-{{$category->id}}" role="tab" aria-controls="pills-{{$category->id}}" aria-selected="{{ $showAriaSelected }}">{{$category->name}}</a> 
+                </li>                  
+              @endforeach
+              
+            </ul>
+              <div class="tab-content text-left">
 
-            </div>
+                @foreach ($categories as $category)       
+                <?php $showActive=($loop->first)?"show active":" ";?>                      
+                <div class="tab-pane fade {{ $showActive}}" id="pills-{{$category->id}}" role="tabpanel" aria-labelledby="pills-{{$category->id}}-tab">
+                  <div class="row">
+                    <div class="col-md-12 ftco-animate media menu-item d-flex justify-content-center">
+                        <img class="mr-3" src="{{ $category->featured_image_url }}" class="img-fluid" alt="Restaurante La Carreta">
+                    </div>
+                  </div>                      
+                  <div class="row">
+                      @foreach ($category->products as $product)
+                      <div class="col-md-4 ftco-animate">   
+                        <div class="media menu-item">
+                          <div class="media-body">
+                            <h5 class="mt-0">{{$product->name}}</h5>
+                            <p>{{$product->description}}</p>
+                            <h6 class="text-primary menu-price">€{{$product->price}}</h6>
+                          </div>
+                        </div>                          
+                      </div>
+                      @endforeach
+                  </div>
+                </div>
+                @endforeach
+               </div>
           </div>
-        </div>
       </div>
     </section>
     <!-- END section -->
 
       
+    <section class="ftco-section" id="section-menu">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center mb-5 ftco-animate">
+            <h2 class="display-4">Nuestro Menú del Día</h2>
+            <div class="row justify-content-center">
+              <div class="col-md-7">
+                <p class="lead">Solo de Lunes a Viernes</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 ">
+            <div class="item">
+              <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
+                <div class="row pt-5 pb-5">
+                  <div class="col-md-6">
+                    <img src="{{ $menuDelDia->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
+                  </div>
+                  
+                  <div class="col-md-6">
+                    <h5 class="mt-0 h4 text-primary">{{$menuDelDia->products[0]->name}}</h5>
+                    <h3> €{{$menuDelDia->products[0]->price}}</h3>
+                    <p class="mb-4">{{$menuDelDia->products[0]->description}}</p>
+                </div>
+                 
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- END section -->
 @stop
 
 @section('scripts')
