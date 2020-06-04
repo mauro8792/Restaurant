@@ -63,6 +63,13 @@ h1, h2, h3, h4, h5,
 .font20 { font-size: 20px;}
 .font24 { font-size: 24px;}
 
+.pNormal{
+  white-space: normal;
+}
+.pPreLine{
+  white-space: pre-line;
+}
+
 .corner4 {
     border-radius: 15px;
 }

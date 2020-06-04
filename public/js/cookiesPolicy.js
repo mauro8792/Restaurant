@@ -18,17 +18,18 @@ function getCookie(c_name){
 }
  
 function setCookie(c_name,value,exdays){
-    //document.cookie = 'SameSite=Lax'; 
-    document.cookie = 'cross-site-cookie=c_name; SameSite=Lax; Secure';
     var exdate=new Date();
     exdate.setDate(exdate.getDate() + exdays);
     var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-    document.cookie=c_name + "=" + c_value;
+    document.cookie=c_name + "=" + c_value+'SameSite=none; Secure';
 }
- 
-if(getCookie('tiendaaviso')!="1"){
-    document.getElementById("barraaceptacion").style.display="block";
+
+function checkCookie(){
+    if(getCookie('tiendaaviso')!="1"){
+        document.getElementById("barraaceptacion").style.display="block";
+    }
 }
+
 function PonerCookie(){
     setCookie('tiendaaviso','1',365);
     document.getElementById("barraaceptacion").style.display="none";
