@@ -80,7 +80,7 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos"><b>Descripción:</b><BR>{{ $catering->description}}</p>
+                                                                    <p class="text-burdeos pPreLine"><b>Descripción:</b><BR>{{ $catering->description}}</p>
                                                                     <!-- <textarea name="desc" rows="5" readonly="readonly">{{ $catering->description}}</textarea> -->
                                                                 </div>
                                                             </div>
@@ -172,7 +172,7 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <p class="text-burdeos"><b>Descripción:</b><BR>{{ $catering->description}}</p>
+                                                                    <p class="text-burdeos pPreLine"><b>Descripción:</b><BR>{{ $catering->description}}</p>
                                                                 </div>
                                                             </div>
                                                             <div class="row">

@@ -12,7 +12,7 @@ class WelcomeController extends Controller
 {
     public function index(){
         
-        $caterings = Catering::all()->random(4);
+        $caterings = Catering::all()->random(2);
         
         $categories = Category::where('show','1')->get()->random(3);
 

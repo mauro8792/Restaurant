@@ -36,10 +36,10 @@
             <img src="{{ $catering->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
           </div>
 
-          <div class="col-md-2"></div>
+          <div class="col-md-1"></div>
   
-          <div class="col-md-5 ftco-animate" data-animate-effect="fadeInRight">
-            <p class="lead">{{$catering->description}}</p> 
+          <div class="col-md-6 ftco-animate" data-animate-effect="fadeInRight">
+            <p class="lead pPreLine text-center">{{$catering->description}}</p> 
             <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€":" "}}{{ $catering->price}}</h5>              
           </div>
         </div>

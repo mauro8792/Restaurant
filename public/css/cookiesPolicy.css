@@ -4,10 +4,10 @@
     left:0px;
     right:0px;
     bottom:0px;
-    padding-bottom:30px;
+    padding-bottom:0px;
     width:100%;
     text-align:center;
-    min-height:60px;
+    min-height:135px;
     background-color: rgba(0, 0, 0, 0.5);
     color:#fff;
     z-index:99999;
@@ -17,9 +17,10 @@
     width:100%;
     position:absolute;
     padding-left:5px;
+    padding-right:5px;
     font-family:verdana;
     font-size:12px;
-    top:30%;
+    top:5px;
 }
  
 .inner a.ok {
