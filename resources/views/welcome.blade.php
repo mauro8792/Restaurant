@@ -264,14 +264,15 @@
           </div>
 
           <div class="col-md mb-1 ftco-animate">
-            <form action="" method="post">
+            <form method="POST" action="{{ route('contact') }}">
+              {{ csrf_field() }}    
               <div class="form-group">
                 <label for="name" class="sr-only">Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Ingrese Su Nombre">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese Su Nombre">
               </div>
               <div class="form-group">
                 <label for="email" class="sr-only">Email</label>
-                <input type="text" class="form-control" id="email" placeholder="Ingrese su Dirección de Correo Electrónico">
+                <input type="text" class="form-control" name="email" id="email" placeholder="Ingrese su Dirección de Correo Electrónico">
               </div>
               <div class="form-group">
                 <label for="message" class="sr-only">Message</label>

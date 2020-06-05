@@ -45,6 +45,8 @@ Route::get('/scontact', function(){
     return redirect()->to(route('home').'#section-contact');
 });
 
+Route::post('/contact', 'HomeController@contact')->name('contact');
+
 Auth::routes();
 
 Route::get('/menu', 'MenuController@index');
