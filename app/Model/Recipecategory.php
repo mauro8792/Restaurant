@@ -14,13 +14,7 @@ class Recipecategory extends Model
     {
     	return $this->hasMany(Recipe::class);
     }
-    public static $messages = [
-        'name.required' => 'Es necesario ingresar un nombre para la categoria de Recetas.',
-        'name.min' => 'El nombre de la categoria debe tener al menos 3 caracteres.',
-    ];
-    public static $rules = [
-        'name' => 'required|min:3',
-    ];
+    
     public function getFeaturedImageUrlAttribute()
     {
         if ($this->image)

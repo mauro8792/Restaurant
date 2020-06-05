@@ -24,7 +24,6 @@ class RecipeController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request, Recipe::$rules, Recipe::$messages);
         $recipe = new Recipe();
         $recipe->name= $request->name;
         $recipe->short_description =$request->short_description;
@@ -52,7 +51,6 @@ class RecipeController extends Controller
     }
     public function update(Request $request, $id){
         
-        $this->validate($request, Recipe::$rules, Recipe::$messages);
         $recipe= Recipe::find($request->recipe_id);
         $recipe->name = $request->name;
         $recipe->short_description =$request->short_description;
