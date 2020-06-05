@@ -16,8 +16,9 @@
 		</li>
 		
         <li>
-            <strong>Mensaje:</strong>
-            {{htmlspecialchars($message)}}
+			<strong>Mensaje:</strong>
+			
+            <p>{{$mensaje}}</p>
         </li>
         
 		

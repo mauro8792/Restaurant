@@ -35,9 +35,9 @@ class HomeController extends Controller
         //     $msj->to($for);
         // });    
         Mail::send('email.consultaEmail',  $request->all(), function ($m) use ($subject,$for) {
-            $m->from('hello@app.com', 'Consultas Restaurante La Carreta');
+            $m->from('info@lacarreta.com.es', 'Consultas Restaurante La Carreta');
 
-            $m->to("info@lacarreta.com.es")->subject('Your Reminder!');
+            $m->to("info@lacarreta.com.es")->subject('Consultas Restaurante La Carreta');
         });   
        
         return redirect('/');
