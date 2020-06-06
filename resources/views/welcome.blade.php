@@ -213,40 +213,27 @@
     <section class="ftco-section" id="section-catering">
       <div class="container">
         
-        <div class="row">
-          <div class="col-md-12 text-center mb-5 ftco-animate">
-            <h4 class="ftco-sub-title">Gauchito Catering</h4>
-            <h2 class="display-4">Catering de puño y letra</h2>
-            <div class="row justify-content-center">
-              <div class="col-md-7">
-                <p class="lead">Somos una Empresa de Catering en Málaga. Prestamos servicio a toda Andalucía preparando Carnes a la Brasa, Cócteles de aperitivos, comida casera preparada delante de los comensales.</p>
-              </div>
-            </div>
+      <div class="row text-center m-3">
+          <div class="col-md-12 ftco-animate" data-animate-effect="fadeInRight">
+              <h4 class="ftco-sub-title">Gauchito Catering</h4>
+              <h2 class="display-4">Catering de puño y letra</h2>
           </div>
-          <div class="col-md-12">
-            <div class="row d-flex justify-content-center">
-              @foreach ($caterings as $catering)
-                <div class="col-md-4">
-                  <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                    <img src="{{ $catering->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
-                    <div class="media-body p-md-5 ">
-                      <h5 class="mt-0 h4">{{$catering->name}}</h5>
-                      <p class="mb-1 pPreLine">{{$catering->description}}</p>
-                      <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€".$catering->price:" "}}</h5>                      
-                      <p class="mb-2"><a href="{{ url('/caterings/'.$catering->id)}}" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
-                    </div>
-                  </div>
-                </div>
-              @endforeach
-            </div>
-          </div>
-
-              <div class="col-md-12 d-flex justify-content-center ftco-animate">
-                <p class="lead"><a href="{{ url('/caterings')}}" class="btn btn-outline-burdeos btn-lg">Vea Nuestros Caterings</a></p>
-              </div>
-        
-        </div>
       </div>
+      <div class="row">
+          <div class="col-md-3 ftco-animate text-center">
+            <img src="{{ asset('/images/logoGauchito.jpg') }}" width="300">
+          </div>
+          <div class="col-md-1"></div>
+          <div class="col-md-8 ftco-animate" data-animate-effect="fadeInRight">
+              <p class="lead mt-5">Somos una Empresa de Catering en Málaga. Prestamos servicio a toda Andalucía preparando Carnes a la Brasa, Cócteles de aperitivos, comida casera preparada delante de los comensales.</p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-md-12 d-flex justify-content-center ftco-animate">
+              <p class="lead"><a href="{{ url('/caterings')}}" class="btn btn-outline-burdeos btn-lg">Vea Nuestros Caterings</a></p>
+          </div>
+      </div>          
+    </div>       
     </section>
     <!-- END section -->
 

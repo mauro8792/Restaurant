@@ -5,25 +5,16 @@
 </head>
 <body>
 	<p>Se ha realizado una nueva consulta!</p>
-	<ul>
-		<li>
-			<strong>Nombre:</strong>
-			{{$name}}
-		</li>
-		<li>
-			<strong>E-Mail:</strong>
-			{{$email}}
-		</li>
-		
-        <li>
-            <strong>Mensaje:</strong>
-            {{htmlspecialchars($message)}}
-        </li>
-        
-		
-	</ul>
-	
+	<p>&nbsp;</p>
+	<p><strong>Nombre:</strong></p>
+	<p>{{$name}}</p>
+	<p>&nbsp;</p>	
+	<p><strong>E-Mail:</strong></p>
+	<p>{{ $email }}</p>
+	<p>&nbsp;</p>	
+	<p><strong>Mensaje:</strong></p>
+	<p>{{ $message }}</p>
+
 	<hr>
-	
 </body>
 </html>
