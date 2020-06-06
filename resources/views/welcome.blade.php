@@ -263,7 +263,7 @@
               </div>
               <div class="form-group">
                 <label for="message" class="sr-only">Message</label>
-                <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Escriba su Mensaje"></textarea>
+                <textarea name="mensaje" id="message" cols="30" rows="10" class="form-control" placeholder="Escriba su Mensaje"></textarea>
               </div>
               <div class="form-group">
                 <input type="submit" class="btn btn-outline-burdeos btn-lg" value="Enviar">

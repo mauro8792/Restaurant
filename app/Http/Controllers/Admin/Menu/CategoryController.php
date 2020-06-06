@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, Category::$rules, Category::$messages);
+        
 
         $category = Category::create($request->only('name', 'description'));       
 
@@ -79,7 +79,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        $this->validate($request, Category::$rules, Category::$messages);
+        
 
         $category->update($request->only('name', 'description'));
         //dd($request->file('image'));

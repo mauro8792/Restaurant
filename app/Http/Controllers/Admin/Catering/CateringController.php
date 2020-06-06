@@ -19,7 +19,7 @@ class CateringController extends Controller
     }
     public function store(Request $request)
     {   
-        $this->validate($request, Catering::$rules, Catering::$messages);
+        
         $catering = new Catering();
         $catering->name = $request->input('name');
         $catering->description = $request->input('description');
@@ -49,7 +49,7 @@ class CateringController extends Controller
     }
     public function update(Request $request)
     {
-        $this->validate($request, Catering::$rules, Catering::$messages);
+        
         $catering = Catering::find($request->id);
         $catering->name = $request->input('name');
         $catering->description = $request->input('description');

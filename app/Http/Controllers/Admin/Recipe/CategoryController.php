@@ -21,7 +21,6 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request, RecipeCategory::$rules, RecipeCategory::$messages);
         $category = RecipeCategory::create($request->only('name', 'description'));       
 
         if ($request->hasFile('image')) {
@@ -63,8 +62,6 @@ class CategoryController extends Controller
 
     public function update(Request $request, RecipeCategory $category)
     {
-        $this->validate($request, RecipeCategory::$rules, RecipeCategory::$messages);
-
         $category->update($request->only('name', 'description'));
         if ($request->hasFile('image')) {
             $file = $request->file('image');
