@@ -46,7 +46,7 @@
                 <img src="{{ $catering->featured_image_url }}" alt="Restaurante La Carreta" class="img-fluid">
                 <div class="media-body p-md-1">
                     <h5 class="mt-0 h4">{{$catering->name}}</h5>
-                    <p class="mb-1">{{$catering->description}}</p>
+                    <p class="mb-1">{{ Str::limit($catering->description,350,'...') }}</p>
                     <h5 class="text-primary mb-2">{{ ($catering->price>0)?"€":" "}}{{ $catering->price}}</h5>                      
                     <p class="mb-2"><a href="{{ url('/caterings/'.$catering->id)}}" class="btn btn-burdeos btn-sm">Ver Catering</a></p>
                 </div>

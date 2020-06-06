@@ -5,6 +5,7 @@
 </head>
 <body>
 	<p>Se ha realizado una nueva consulta!</p>
+
 	<ul>
 		<li>
 			<strong>Nombre:</strong>
@@ -23,8 +24,6 @@
         
 		
 	</ul>
-	
 	<hr>
-	
 </body>
 </html>
